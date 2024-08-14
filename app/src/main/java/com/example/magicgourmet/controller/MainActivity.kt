@@ -10,7 +10,5 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.vista_principal)
 
-        val textView = findViewById<TextView>(R.id.myTextView)
-        textView.text = "Texto cambiado desde MainActivity"
     }
 }
