@@ -9,7 +9,7 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:text="@string/control_de_acceso_magicgourmet" />
+        android:text="Control de acceso MagicGourmet" />
 
     <EditText
         android:id="@+id/editTextTextEmailAddress2"
@@ -18,7 +18,7 @@
         android:layout_gravity="top|center"
         android:layout_marginTop="100dp"
         android:ems="10"
-        android:hint="@string/correo"
+        android:hint="Correo"
         android:inputType="textEmailAddress" />
 
     <EditText
@@ -28,7 +28,7 @@
         android:layout_gravity="top|center"
         android:layout_marginTop="150dp"
         android:ems="10"
-        android:hint="@string/contrase_a"
+        android:hint="contraseña"
         android:inputType="textPassword" />
 
     <EditText
@@ -38,7 +38,7 @@
         android:layout_gravity="top|center"
         android:layout_marginTop="50dp"
         android:ems="10"
-        android:hint="@string/usuario"
+        android:hint="Usuario"
         android:inputType="text" />
 
     <Button
@@ -47,15 +47,15 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center|start"
         android:layout_marginBottom="100dp"
-        android:layout_marginStart="80dp"
-        android:text="@string/iniciar_sesion" />
+        android:layout_marginLeft="80dp"
+        android:text="Registrarse" />
 
     <Button
         android:id="@+id/button7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center|end"
-        android:layout_marginEnd="80dp"
+        android:layout_marginRight="80dp"
         android:layout_marginBottom="100dp"
-        android:text="@string/registrarse" />
+        android:text="Salir" />
 </FrameLayout>
