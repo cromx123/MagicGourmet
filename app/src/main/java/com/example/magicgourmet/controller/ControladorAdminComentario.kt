@@ -7,7 +7,7 @@ import com.example.magicgourmet.R
 class ControladorAdminComentario:ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.vista_principal)
+        setContentView(R.layout.vista_admin_comentario)
 
     }
 }

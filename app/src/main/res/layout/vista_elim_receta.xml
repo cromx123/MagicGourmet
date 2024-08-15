@@ -1,7 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    android:gravity="center|top"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center|top"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center"
+            android:padding="10dp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:background="@color/fondo"
+            android:text="Eliminar Receta"
+            android:fontFamily="@font/bethany_elingston"/>
 
-</LinearLayout>
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginVertical="10dp"
+            android:columnCount="2">
+            <TextView
+                android:id="@+id/textnom_receta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:text="Nombre:"
+                android:textColor="@color/black"
+                android:labelFor="@+id/nom_receta"
+                android:layout_row="0"
+                android:layout_column="0" />
+            <EditText
+                android:id="@+id/nom_receta"
+                android:layout_width="240dp"
+                android:layout_height="48dp"
+                android:text=""
+                android:inputType="text"
+                android:layout_row="0"
+                android:layout_column="1" />
+        </GridLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="10dp">
+
+
+            <Button
+                android:id="@+id/btnAcceptelimReceta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:text="Confirmar"/>
+
+            <Button
+                android:id="@+id/btnCancelelimReceta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="Cancelar"/>
+        </RelativeLayout>
+    </LinearLayout>
+    <FrameLayout
+        android:id="@+id/mensaje_confirmarelim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/fondo_alerta"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginBottom="160dp"
+            android:layout_gravity="center" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="45dp"
+            android:layout_marginTop="130dp"
+            android:layout_marginBottom="160dp"
+            android:layout_gravity="center|top"
+            android:text="¿Seguro que deseas eliminar esta receta?"
+            android:textColor="@color/black"
+            android:textSize="18sp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="45dp"
+            android:layout_marginTop="130dp"
+            android:layout_marginBottom="160dp"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="10dp"
+            android:layout_gravity="center">
+
+
+            <Button
+                android:id="@+id/btnAcceptconelimReceta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:text="Confirmar"/>
+
+            <Button
+                android:id="@+id/btnCancelconelimReceta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="Cancelar"/>
+        </RelativeLayout>
+    </FrameLayout>
+
+
+</FrameLayout>

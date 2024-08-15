@@ -1,7 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#121111"
+        android:layout_gravity="bottom"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:layout_marginBottom="10dp"
+        android:paddingHorizontal="10dp"
+        android:orientation="horizontal">
+
+
+        <ImageButton
+            android:id="@+id/btnhomeir"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom"
+            android:layout_marginHorizontal="15dp"
+            android:contentDescription="hhaha"
+            android:scaleType="fitXY"
+            android:src="@drawable/hogar"
+            android:background="@color/transparente"/>
+
+
+        <ImageButton
+            android:id="@+id/btnbuscarir"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom"
+            android:layout_marginHorizontal="15dp"
+            android:contentDescription="hahshj"
+            android:scaleType="fitXY"
+            android:src="@drawable/busqueda"
+            android:background="@color/transparente"/>
+
+        <ImageButton
+            android:id="@+id/btncrearir"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom"
+            android:layout_marginHorizontal="15dp"
+            android:contentDescription="todo1jj"
+            android:scaleType="fitXY"
+            android:src="@drawable/agregar"
+            android:background="@color/transparente"/>
+
+        <ImageButton
+            android:id="@+id/btnperfilir"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom"
+            android:layout_marginHorizontal="15dp"
+            android:contentDescription="todo1"
+            android:scaleType="fitXY"
+            android:src="@drawable/perfil_us"
+            android:background="@color/transparente"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginBottom="40dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:text="¿Que Desear hacer con tu receta?"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="80dp"/>
+        <Button
+            android:id="@+id/btn_controlcrear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:paddingVertical="15dp"
+            android:paddingHorizontal="50dp"
+            android:text="Crear"
+            android:textSize="18sp"/>
+        <Button
+            android:id="@+id/btn_controlmod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:paddingVertical="15dp"
+            android:paddingHorizontal="50dp"
+            android:text="Modificar"
+            android:textSize="18sp"/>
+        <Button
+            android:id="@+id/btn_controlelim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:paddingVertical="15dp"
+            android:paddingHorizontal="40dp"
+            android:text="Eliminar"
+            android:textSize="18sp"/>
+    </LinearLayout>
+</FrameLayout>
