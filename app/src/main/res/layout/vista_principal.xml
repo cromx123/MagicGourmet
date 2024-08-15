@@ -14,44 +14,91 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="center">
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+
+
+        <ImageButton
+            android:id="@+id/button1"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_gravity="bottom"
-            android:text="Button" />
+            android:contentDescription="@string/todo1"
+            android:text="@string/button1"
+            android:src="@drawable/homa"
+            android:scaleType="fitXY"
+            android:layout_marginHorizontal="20dp"/>
 
-        <Button
+
+        <ImageButton
             android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_gravity="bottom"
-            android:text="Button" />
-        <Button
+            android:contentDescription="@string/todo1"
+            android:text="@string/button1"
+            android:src="@drawable/busqueda"
+            android:scaleType="fitXY"
+            android:layout_marginHorizontal="20dp"
+            />
+
+        <ImageButton
             android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_gravity="bottom"
-            android:text="Button" />
-        <Button
+            android:contentDescription="@string/todo1"
+            android:text="@string/button1"
+            android:src="@drawable/agregar"
+            android:scaleType="fitXY"
+            android:layout_marginHorizontal="20dp"
+            />
+
+        <ImageButton
             android:id="@+id/button4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_gravity="bottom"
-            android:text="Button" />
+            android:contentDescription="@string/todo1"
+            android:scaleType="fitXY"
+            android:src="@drawable/editar"
+            android:text="@string/button1"
+            android:layout_marginHorizontal="20dp"/>
+
+
     </LinearLayout>
 
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center|top"
-        android:layout_marginTop="100dp"
-        android:padding="20dp"
-        android:textSize="10dp"
-        android:text="Button" />
+        android:layout_gravity="top"
+        android:orientation="horizontal">
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/magicgourmet"
+            android:padding="20dp"
+            android:textSize="40sp"
+            android:fontFamily="cursive"
+            android:textStyle="italic"/>
+
+        <ImageButton
+            android:id="@+id/button5"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_gravity="end"
+            android:contentDescription="@string/abre_los_ojos"
+            android:padding="20dp"
+            android:text="@string/button"
+            android:textSize="@dimen/_15sp"
+            android:src="@drawable/talento"
+            android:scaleType="fitXY"
+            />
+
+
+    </LinearLayout>
 
 </FrameLayout>

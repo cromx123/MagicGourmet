@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">MagicGourmet</string>
+    <string name="button">Button</string>
+    <string name="abre_los_ojos">abre los ojos</string>
+    <string name="button1">Button</string>
+    <string name="button2">Button</string>
+    <string name="todo">TODO</string>
+    <string name="todo1">TODO</string>
+    <string name="todo3">TODO</string>
+    <string name="button4">Button</string>
+    <string name="todo4">TODO</string>
+    <string name="button5">Button</string>
+    <string name="magicgourmet">MagicGourmet</string>
 </resources>
