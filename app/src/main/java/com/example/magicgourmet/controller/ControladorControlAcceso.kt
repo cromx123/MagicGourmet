@@ -1,4 +1,13 @@
 package com.example.magicgourmet.controller
 
-class ControladorControlAcceso {
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import com.example.magicgourmet.R
+
+class ControladorControlAcceso: ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.vista_principal)
+
+    }
 }

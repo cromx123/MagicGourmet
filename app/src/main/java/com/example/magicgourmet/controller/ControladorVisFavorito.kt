@@ -5,7 +5,7 @@ import androidx.activity.ComponentActivity
 import com.example.magicgourmet.R
 
 
-class ControladorRecetaVisualizada: ComponentActivity() {
+class ControladorVisFavorito: ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.vista_principal)
