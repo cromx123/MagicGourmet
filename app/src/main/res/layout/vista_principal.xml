@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+             android:orientation="vertical"
              android:layout_width="match_parent"
              android:layout_height="match_parent">
 
@@ -10,40 +10,95 @@
         android:background="#121111"
         android:layout_gravity="bottom"
         />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+
+
+        <ImageButton
+            android:id="@+id/button1"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom"
+            android:contentDescription="hhaha"
+            android:text="button12"
+            android:src="@drawable/homa"
+            android:scaleType="fitXY"
+            android:layout_marginHorizontal="20dp"/>
+
+
+        <ImageButton
+            android:id="@+id/button2"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom"
+            android:contentDescription="hahshj"
+            android:text="button1"
+            android:src="@drawable/busqueda"
+            android:scaleType="fitXY"
+            android:layout_marginHorizontal="20dp"
+            />
+
+        <ImageButton
+            android:id="@+id/button3"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom"
+            android:contentDescription="todo1jj"
+            android:text="sbutton1"
+            android:src="@drawable/agregar"
+            android:scaleType="fitXY"
+            android:layout_marginHorizontal="20dp"
+            />
+
+        <ImageButton
+            android:id="@+id/button4"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom"
+            android:contentDescription="todo1"
+            android:scaleType="fitXY"
+            android:src="@drawable/editar"
+            android:text="button1dssa"
+            android:layout_marginHorizontal="20dp"/>
+
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
+        android:layout_gravity="top"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btnhome"
+        <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:text="Home" />
+            android:text="magicgourmet"
+            android:padding="20dp"
+            android:textSize="40sp"
+            android:fontFamily="cursive"
+            android:textStyle="italic"/>
 
-        <Button
-            android:id="@+id/btnbuscar"
+        <ImageButton
+            android:id="@+id/button5"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:text="buscar" />
+            android:layout_height="100dp"
+            android:layout_gravity="end"
+            android:contentDescription="abre_los_ojos"
+            android:padding="20dp"
+            android:text="kjsjsbutton"
+            android:textSize="@dimen/_15sp"
+            android:src="@drawable/talento"
+            android:scaleType="fitXY"
+            />
 
-        <Button
-            android:id="@+id/btncrear"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:text="Crear" />
 
-        <Button
-            android:id="@+id/btnperfil"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:text="Perfil?"/>
     </LinearLayout>
 
 </FrameLayout>
