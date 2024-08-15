@@ -7,7 +7,7 @@ import com.example.magicgourmet.R
 class ControladorAnadirIngrediente: ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.vista_principal)
+        setContentView(R.layout.vista_anadir_ingrediente)
 
     }
 }

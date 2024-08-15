@@ -16,6 +16,11 @@ class ControladorPrincipal : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.vista_principal)
 
+        btnhome = findViewById(R.id.btnhome)
+        btnbuscar = findViewById(R.id.btnbuscar)
+        btncrear = findViewById(R.id.btncrear)
+        btnperfil = findViewById(R.id.btnperfil)
+
         btnhome.setOnClickListener {
             val optionsIntent = Intent(this, ControladorPrincipal::class.java)
             startActivity(optionsIntent)

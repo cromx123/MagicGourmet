@@ -8,7 +8,7 @@ import com.example.magicgourmet.R
 class ControladorAnadirReceta: ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.vista_principal)
+        setContentView(R.layout.vista_ingresar_receta)
 
     }
 }
