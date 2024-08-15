@@ -7,4 +7,7 @@
     <string name="usuario">Usuario</string>
     <string name="iniciar_sesion">Iniciar Sesion</string>
     <string name="registrarse">Registrarse</string>
+    <string name="eliminar_ingrediente">Eliminar Ingrediente</string>
+    <string name="a_adir_ingrediente">Añadir Ingrediente</string>
+    <string name="ingrediente">Ingrediente</string>
 </resources>
