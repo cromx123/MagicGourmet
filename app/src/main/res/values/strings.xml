@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">MagicGourmet</string>
     <string name="texto_btn1">soy un btn</string>
+    <string name="button">Button</string>
 </resources>

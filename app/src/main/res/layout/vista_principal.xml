@@ -10,6 +10,7 @@
         android:background="#121111"
         android:layout_gravity="bottom"
         />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,17 +30,33 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:text="Button" />
+
         <Button
             android:id="@+id/button3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:text="Button" />
+
         <Button
             android:id="@+id/button4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:text="Hola" />
+            android:text="hola"
+            android:textStyle="bold" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|top"
+        android:layout_marginHorizontal="20sp"
+        android:textSize="11sp"
+        android:text="@string/button" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
 </FrameLayout>
