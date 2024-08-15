@@ -12,8 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MagicGourmet"
         tools:targetApi="31">
+
+        <!-- Atividad Principal -->
         <activity
-            android:name=".controller.MainActivity"
+            android:name=".controller.ControladorPrincipal"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.MagicGourmet">
@@ -23,6 +25,37 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Otras actividades -->
+        <activity android:name=".controller.ControladorAdminComentario"/>
+        <activity android:name=".controller.ControladorAdminIngrediente"/>
+        <activity android:name=".controller.ControladorAdminReceta"/>
+        <activity android:name=".controller.ControladorAdminUsuario"/>
+        <activity android:name=".controller.ControladorAgregarFavorito"/>
+        <activity android:name=".controller.ControladorAnadirFiltro"/>
+        <activity android:name=".controller.ControladorAnadirIngrediente"/>
+        <activity android:name=".controller.ControladorAnadirReceta"/>
+        <activity android:name=".controller.ControladorBuscarReceta"/>
+        <activity android:name=".controller.ControladorControlAcceso"/>
+        <activity android:name=".controller.ControladorEditarReceta"/>
+        <activity android:name=".controller.ControladorElimComentario"/>
+        <activity android:name=".controller.ControladorElimFavorito"/>
+        <activity android:name=".controller.ControladorElimFiltro"/>
+        <activity android:name=".controller.ControladorElimIngrediente"/>
+        <activity android:name=".controller.ControladorElimReceta"/>
+        <activity android:name=".controller.ControladorElimUsuario"/>
+        <activity android:name=".controller.ControladorGestFavorito"/>
+        <activity android:name=".controller.ControladorGestComentario"/>
+        <activity android:name=".controller.ControladorIngresarComentario"/>
+        <activity android:name=".controller.ControladorModUsuario"/>
+        <activity android:name=".controller.ControladorRecetaVisualizada"/>
+        <activity android:name=".controller.ControladorSelecFiltros"/>
+        <activity android:name=".controller.ControladorSelecIngredientes"/>
+        <activity android:name=".controller.ControladorVisFavorito"/>
+
+
+
+
     </application>
 
 </manifest>
