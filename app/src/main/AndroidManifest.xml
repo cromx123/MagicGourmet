@@ -51,6 +51,7 @@
         <activity android:name=".controller.ControladorRecetaVisualizada"/>
         <activity android:name=".controller.ControladorSelecFiltros"/>
         <activity android:name=".controller.ControladorSelecIngredientes"/>
+        <activity android:name=".controller.ControladorVisFavorito"/>
 
 
 
