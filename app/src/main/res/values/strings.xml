@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">MagicGourmet</string>
     <string name="texto_btn1">soy un btn</string>
+    <string name="control_de_acceso_magicgourmet">Control de acceso MagicGourmet</string>
+    <string name="correo">Correo</string>
+    <string name="contrase_a">contraseña</string>
+    <string name="usuario">Usuario</string>
+    <string name="iniciar_sesion">Iniciar Sesion</string>
+    <string name="registrarse">Registrarse</string>
 </resources>
