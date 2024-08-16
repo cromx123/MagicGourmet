@@ -7,14 +7,19 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/editTextTextPassword"
-        android:layout_width="127dp"
-        android:layout_height="41dp"
-        android:ems="10"
-        android:hint="Añadir Ingrediente" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:background="@color/fondo"
+        android:fontFamily="@font/bethany_elingston"
+        android:text="Añadir Ingrediente" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/editText11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top|center"
@@ -24,7 +29,7 @@
         android:inputType="text" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/editText21"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top|center"
@@ -34,7 +39,7 @@
         android:inputType="text" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/editText112"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top|center"

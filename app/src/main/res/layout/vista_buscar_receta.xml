@@ -103,12 +103,16 @@
         android:text="Volver" />
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center|top"
-        android:text="Buscar Receta"
-        android:textSize="30sp"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:background="@color/fondo"
+        android:fontFamily="@font/bethany_elingston"
+        android:text="Buscar Receta"/>
 
 
 </FrameLayout>
