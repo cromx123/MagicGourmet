@@ -52,8 +52,8 @@ class ControladorAnadirReceta: ComponentActivity() {
                     Ingrediente(id = 3, nombre = "Azúcar")
                 )
 
-                val pasos = listOf(
-                    Paso(descripcion = paso)
+                val pasos = Paso(
+                    descripcion = paso
                 )
                 // Realiza peticion al modelo, y el modelo ejecuta la funcion correspondiente
                 val recetaId = dbHelper.crearReceta(nuevaReceta, ingredientes, pasos)

@@ -135,19 +135,16 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         db.execSQL(SQL_DELETE_FILTRO_TABLE)
         onCreate(db)
     }
-    fun crearReceta( receta: Receta, ingredientes: List<Ingrediente>, pasos: List<Paso>): Long{
+    fun crearReceta( receta: Receta, ingredientes: List<Ingrediente>, pasos: Paso): Long{
         val db = this.writableDatabase
-
-        // Iniciar una transacción para asegurar que todos los datos se inserten correctamente
         db.beginTransaction()
         var recetaId: Long = -1
-
         try {
             // Crear un ContentValues para la tabla Receta
             val recetaValues = ContentValues().apply {
                 put("Nombre", receta.nombre)
                 put("Descripcion", receta.descripcion)
-                put("Ingredientes", receta.ingredientes) // Puede que necesites concatenar los ingredientes como un string
+                put("Ingredientes", receta.ingredientes)
                 put("Link", receta.link)
                 put("Imagen", receta.imagen)
             }
@@ -158,27 +155,92 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
             // Insertar ingredientes relacionados
             for (ingrediente in ingredientes) {
                 val ingredienteValues = ContentValues().apply {
-                    put("id", ingrediente.id) // Si id es autoincremental, puedes omitirlo
+                    put("id", ingrediente.id)
                     put("Nombre", ingrediente.nombre)
                 }
                 db.insert("Ingrediente", null, ingredienteValues)
             }
 
             // Insertar pasos relacionados
-            for (paso in pasos) {
-                val pasoValues = ContentValues().apply {
-                    put("Codreceta", recetaId)
-                    put("Descripcion", paso.descripcion)
-                }
-                db.insert("Paso", null, pasoValues)
+            val pasoValues = ContentValues().apply {
+                put("Codreceta", recetaId)
+                put("Descripcion", pasos.descripcion)
             }
+            db.insert("Paso", null, pasoValues)
 
-            // Marcar la transacción como exitosa
             db.setTransactionSuccessful()
         } finally {
             db.endTransaction()
         }
 
         return recetaId
+    }
+    fun modificarReceta(receta: Receta, ingredientes: List<Ingrediente>, pasos: Paso): Long{
+        val db = this.writableDatabase
+
+        // Iniciar una transacción para asegurar que todos los datos se inserten correctamente
+        db.beginTransaction()
+        var recetaId: Long = -1
+
+        return recetaId
+    }
+    fun eliminarReceta(id : Int): Int {
+        val db = this.writableDatabase
+        db.beginTransaction()
+        var filasAfectadas: Int = 0
+        try {
+            // Eliminar pasos relacionados
+            db.delete("Paso", "Codreceta = ?", arrayOf(id.toString()))
+            filasAfectadas = 1
+            // Eliminar comentarios relacionados
+            db.delete("Comentario", "Codreceta = ?", arrayOf(id.toString()))
+            filasAfectadas = 2
+            // Eliminar la receta
+            db.delete("Receta", "Codreceta = ?", arrayOf(id.toString()))
+            filasAfectadas = 3
+            db.setTransactionSuccessful()
+        } finally {
+            db.endTransaction()
+        }
+        return filasAfectadas
+    }
+    fun buscarReceta(){}
+    fun crearUsuario(usuario: Usuario): Long{
+        val db = this.writableDatabase
+        // Iniciar una transacción para asegurar que todos los datos se inserten correctamente
+        db.beginTransaction()
+        var usuarioId: Long = -1
+
+        try {
+            // Crear un Usuario
+            val usuarioValues = ContentValues().apply {
+                put("User", usuario.user)
+                put("Pass", usuario.pass)
+                put("Correo", usuario.correo)
+                put("Tipo_user", usuario.tipo_user)
+            }
+
+            // Insertar en la tabla usuario
+            usuarioId = db.insert("Usuario", null, usuarioValues)
+            if (usuario.tipo_user == "Adminitrador"){
+                // Crear un Administrador
+                val adminValues = ContentValues().apply {
+                    put("User", usuario.user)
+                }
+                // Insertar en la tabla cliente
+                usuarioId = db.insert("Administrador", null, adminValues)
+            }else{
+                // Crear un Cliente
+                val clienteValues = ContentValues().apply {
+                    put("User", usuario.user)
+                    put("Cant_favorito", "0")
+                }
+                // Insertar en la tabla cliente
+                usuarioId = db.insert("Cliente", null, clienteValues)
+            }
+        } finally {
+            db.endTransaction()
+        }
+        return usuarioId
     }
 }
