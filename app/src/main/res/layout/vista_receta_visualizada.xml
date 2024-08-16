@@ -5,9 +5,15 @@
 
 
     <TextView
-        android:id="@+id/textView2"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:background="@color/fondo"
+        android:fontFamily="@font/bethany_elingston"
         android:text="Receta Visualizada" />
 
     <TextView

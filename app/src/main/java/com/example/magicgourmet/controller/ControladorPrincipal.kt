@@ -22,7 +22,7 @@ class ControladorPrincipal : ComponentActivity() {
             R.id.btnhome to ControladorPrincipal::class.java,
             R.id.btnbuscar to ControladorBuscarReceta::class.java,
             R.id.btncrear to ControladorAdminReceta::class.java,
-            R.id.btnperfil to ControladorVisFavorito::class.java
+            R.id.btnperfil to ControladorPerfilUsuario::class.java
         )
 
 

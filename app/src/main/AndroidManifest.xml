@@ -52,6 +52,8 @@
         <activity android:name=".controller.ControladorSelecFiltros"/>
         <activity android:name=".controller.ControladorSelecIngredientes"/>
         <activity android:name=".controller.ControladorVisFavorito"/>
+        <activity android:name=".controller.ControladorPerfilUsuario"/>
+        <activity android:name=".controller.ControladorAutoRegistro"/>
 
 
 

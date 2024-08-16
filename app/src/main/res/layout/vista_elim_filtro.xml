@@ -3,15 +3,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center_horizontal"
-    android:padding="16dp">
+    android:gravity="center_horizontal">
 
     <TextView
-        android:id="@+id/editTextTextPassword"
-        android:layout_width="127dp"
-        android:layout_height="41dp"
-        android:ems="10"
-        android:hint="Añadir Filtro" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:background="@color/fondo"
+        android:fontFamily="@font/bethany_elingston"
+        android:text="Añadir Filtro" />
 
     <EditText
         android:id="@+id/editText"

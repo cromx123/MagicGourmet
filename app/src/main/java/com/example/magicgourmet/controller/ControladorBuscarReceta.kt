@@ -22,7 +22,7 @@ class ControladorBuscarReceta: ComponentActivity() {
             R.id.btnhomebr to ControladorPrincipal::class.java,
             R.id.btnbuscarbr to ControladorBuscarReceta::class.java,
             R.id.btncrearbr to ControladorAdminReceta::class.java,
-            R.id.btnperfilbr to ControladorVisFavorito::class.java
+            R.id.btnperfilbr to ControladorPerfilUsuario::class.java
         )
 
         buttonActivityMap.forEach { (buttonId, activityClass) ->

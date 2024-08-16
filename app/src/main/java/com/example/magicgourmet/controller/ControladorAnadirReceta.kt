@@ -1,8 +1,7 @@
 package com.example.magicgourmet.controller
 
-import android.content.ContentValues
+
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -52,8 +51,8 @@ class ControladorAnadirReceta: ComponentActivity() {
                     Ingrediente(id = 3, nombre = "Azúcar")
                 )
 
-                val pasos = listOf(
-                    Paso(descripcion = paso)
+                val pasos = Paso(
+                    descripcion = paso
                 )
                 // Realiza peticion al modelo, y el modelo ejecuta la funcion correspondiente
                 val recetaId = dbHelper.crearReceta(nuevaReceta, ingredientes, pasos)

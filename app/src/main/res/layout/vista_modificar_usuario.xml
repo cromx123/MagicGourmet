@@ -14,8 +14,8 @@
         android:textColor="@color/white"
         android:textSize="20sp"
         android:background="@color/fondo"
-        android:text="Editar Usuario"
-        android:fontFamily="@font/bethany_elingston"/>
+        android:fontFamily="@font/bethany_elingston"
+        android:text="Editar Usuario"/>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
