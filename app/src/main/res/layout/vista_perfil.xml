@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <View
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:background="#121111"
-        android:layout_gravity="bottom"
-        />
+        android:layout_gravity="bottom" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
 
 
         <ImageButton
-            android:id="@+id/btnhomebr"
+            android:id="@+id/btnhomeper"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_gravity="bottom"
@@ -32,7 +32,7 @@
 
 
         <ImageButton
-            android:id="@+id/btnbuscarbr"
+            android:id="@+id/btnbuscarper"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_gravity="bottom"
@@ -43,7 +43,7 @@
             android:background="@color/transparente"/>
 
         <ImageButton
-            android:id="@+id/btncrearbr"
+            android:id="@+id/btncrearper"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_gravity="bottom"
@@ -54,7 +54,7 @@
             android:background="@color/transparente"/>
 
         <ImageButton
-            android:id="@+id/btnperfilbr"
+            android:id="@+id/btnperfilper"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_gravity="bottom"
@@ -63,67 +63,26 @@
             android:scaleType="fitXY"
             android:src="@drawable/perfil_us"
             android:background="@color/transparente"/>
-
-
     </LinearLayout>
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center|top"
-        android:orientation="vertical">
+        android:layout_gravity="top"
+        android:background="@color/fondo"
+        android:orientation="horizontal">
+
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/userName_perfil"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="top|center"
-            android:padding="10dp"
-            android:textAlignment="center"
+            android:text="Nombre_user"
             android:textColor="@color/white"
-            android:textSize="20sp"
-            android:background="@color/fondo"
-            android:fontFamily="@font/bethany_elingston"
-            android:text="Buscar Receta"/>
-        <EditText
-            android:id="@+id/editTextText2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="30dp"
-            android:layout_marginHorizontal="30dp"
-            android:ems="10"
-            android:layout_gravity="center|top"
-            android:inputType="text"
-            android:text="Nombre Receta" />
-
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            android:layout_gravity="center"
-            android:text="Seleccionar Filtros" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-            <Button
-                android:id="@+id/button9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|start"
-                android:text="Buscar" />
-            <Button
-                android:id="@+id/button10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|end"
-                android:text="Volver" />
-        </LinearLayout>
-
-    </LinearLayout>
+            android:paddingHorizontal="15dp"
+            android:paddingVertical="10dp"
+            android:textSize="28sp"
+            android:fontFamily="@font/bethany_elingston"/>
 
 
 
-
-
+    </FrameLayout>
 </FrameLayout>

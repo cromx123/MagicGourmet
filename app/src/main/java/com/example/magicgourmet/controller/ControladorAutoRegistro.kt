@@ -1,5 +1,7 @@
 package com.example.magicgourmet.controller
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -10,9 +12,11 @@ import com.example.magicgourmet.model.DatabaseHelper
 import com.example.magicgourmet.model.Usuario
 
 class ControladorAutoRegistro: ComponentActivity() {
+    private lateinit var sharedPreferences: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.vista_autoregistro)
+        sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         val btnVolver = findViewById<Button>(R.id.btn_salirregistro)
         val btnRegistro= findViewById<Button>(R.id.btn_registrarse)
         val editTextNombre = findViewById<EditText>(R.id.autoregistusuario)
@@ -42,9 +46,15 @@ class ControladorAutoRegistro: ComponentActivity() {
                     val usuarioId = dbHelper.crearUsuario(nuevoUsuario)
                     if (usuarioId != -1L) {
                         Toast.makeText(this, "Usuario registrado", Toast.LENGTH_SHORT).show()
+                        sharedPreferences.edit().apply {
+                            putString("nameuser", nombre)
+                            putInt("sessionActive", 1)
+                            apply() // Aplica los cambios de una sola vez
+                        }
                     } else {
                         Toast.makeText(this, "Error al registrar usuario", Toast.LENGTH_SHORT).show()
                     }
+                    finish()
                 }else{
                     Toast.makeText(this,"No coinciden las contraseñas",Toast.LENGTH_LONG).show()
                 }
