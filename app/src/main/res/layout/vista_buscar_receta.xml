@@ -10,7 +10,7 @@
         android:layout_gravity="bottom"
         />
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
@@ -66,6 +66,49 @@
             android:background="@color/transparente"/>
 
 
-    </LinearLayout>
+    </FrameLayout>
+
+    <EditText
+        android:id="@+id/editTextText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_gravity="center|top"
+        android:layout_marginTop="200dp"
+        android:inputType="text"
+        android:text="Nombre Receta" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="80dp"
+        android:text="Seleccionar Filtros" />
+
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|start"
+        android:layout_marginStart="100dp"
+        android:text="Buscar" />
+
+    <Button
+        android:id="@+id/button10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|end"
+        android:layout_marginEnd="100dp"
+        android:text="Volver" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center|top"
+        android:text="Buscar Receta"
+        android:textSize="30sp"/>
+
 
 </FrameLayout>
