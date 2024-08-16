@@ -13,7 +13,6 @@ class ControladorBuscarReceta: ComponentActivity() {
         setContentView(R.layout.vista_buscar_receta)
         val btnbuscarbr =findViewById<ImageButton>(R.id.btnbuscarbr)
         btnbuscarbr.setImageResource(R.drawable.busqueda_selec)
-
         menuInferiorButtons()
     }
 
