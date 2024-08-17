@@ -153,6 +153,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
             // Insertar en la tabla Receta
             recetaId = db.insert("Receta", null, recetaValues)
 
+
             // Insertar pasos relacionados
             val pasoValues = ContentValues().apply {
                 put("Codreceta", recetaId)
@@ -265,4 +266,23 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         }
         return usuarioId
     }
+
+    fun getAllIngredients(): List<String> {
+        val ingredients = mutableListOf<String>()
+        val db = this.readableDatabase
+        val query = "SELECT $COLUMN_INGREDIENTE_NOMBRE FROM $TABLE_INGREDIENTE"
+        Log.d("DBHelper", "Executing query: $query")
+        val cursor = db.rawQuery(query, null)
+
+        if (cursor.moveToFirst()) {
+            do {
+                val nombre = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_INGREDIENTE_NOMBRE))
+                Log.d("DBHelper", "Ingredient found: $nombre")
+                ingredients.add(nombre)
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
+        return ingredients
+    }
+
 }
