@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 
 class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
@@ -135,7 +136,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         db.execSQL(SQL_DELETE_FILTRO_TABLE)
         onCreate(db)
     }
-    fun crearReceta( receta: Receta, ingredientes: List<Ingrediente>, pasos: Paso): Long{
+    fun crearReceta( receta: Receta, pasos: Paso): Long{
         val db = this.writableDatabase
         db.beginTransaction()
         var recetaId: Long = -1
@@ -151,15 +152,6 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
 
             // Insertar en la tabla Receta
             recetaId = db.insert("Receta", null, recetaValues)
-
-            // Insertar ingredientes relacionados
-            for (ingrediente in ingredientes) {
-                val ingredienteValues = ContentValues().apply {
-                    put("id", ingrediente.id)
-                    put("Nombre", ingrediente.nombre)
-                }
-                db.insert("Ingrediente", null, ingredienteValues)
-            }
 
             // Insertar pasos relacionados
             val pasoValues = ContentValues().apply {
@@ -204,7 +196,38 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         }
         return filasAfectadas
     }
-    fun buscarReceta(){}
+    fun buscarReceta(nombre: String): Receta? {
+        val db = this.readableDatabase
+        var recetaBuscada: Receta? = null
+
+        val cursor = db.query(
+            "Receta", // Nombre de la tabla
+            null, // Columnas (null selecciona todas las columnas)
+            "Nombre = ?", // Clausula WHERE
+            arrayOf(nombre), // Argumentos de la clausula WHERE
+            null, // Group by
+            null, // Having
+            null // Order by
+        )
+
+        cursor.use { // Esto cierra automáticamente el cursor después de usarlo
+            if (it.moveToFirst()) {
+                // Obtener los valores de la receta desde el cursor
+                val descripcion = it.getString(it.getColumnIndexOrThrow("Descripcion"))
+                val ingredientes = it.getString(it.getColumnIndexOrThrow("Ingredientes"))
+                val link = it.getString(it.getColumnIndexOrThrow("Link"))
+                val imagen = it.getString(it.getColumnIndexOrThrow("Imagen"))
+
+                recetaBuscada = Receta(nombre, descripcion, ingredientes, link, imagen)
+            }
+        }
+        if (cursor != null && cursor.count > 0) {
+            Log.d("BuscarReceta", "Recetas encontradas: ${cursor.count}")
+        } else {
+            Log.d("BuscarReceta", "No se encontró ninguna receta con ese nombre")
+        }
+        return recetaBuscada
+    }
     fun crearUsuario(usuario: Usuario): Long{
         val db = this.writableDatabase
         db.beginTransaction()

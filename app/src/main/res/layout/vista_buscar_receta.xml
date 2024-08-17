@@ -82,46 +82,35 @@
             android:background="@color/fondo"
             android:fontFamily="@font/bethany_elingston"
             android:text="Buscar Receta"/>
+
         <EditText
-            android:id="@+id/editTextText2"
+            android:id="@+id/nombrerecetab"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="30dp"
-            android:layout_marginHorizontal="30dp"
-            android:ems="10"
             android:layout_gravity="center|top"
-            android:inputType="text"
-            android:text="Nombre Receta" />
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginVertical="30dp"
+            android:ems="10"
+            android:hint="Nombre Receta"
+            android:inputType="text" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/btn_selecingredientesb"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
             android:layout_gravity="center"
             android:text="Seleccionar Filtros" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
+
+        <Button
+            android:id="@+id/btn_buscarreceta"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginHorizontal="50dp"
-            android:gravity="center">
-            <Button
-                android:id="@+id/button9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="10dp"
-                android:text="Buscar" />
-            <Button
-                android:id="@+id/button10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
-                android:text="Volver" />
-        </RelativeLayout>
+            android:layout_marginBottom="30dp"
+            android:layout_gravity="center"
+            android:text="Buscar" />
+
 
     </LinearLayout>
 

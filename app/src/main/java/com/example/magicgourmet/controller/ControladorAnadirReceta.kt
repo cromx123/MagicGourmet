@@ -29,6 +29,7 @@ class ControladorAnadirReceta: ComponentActivity() {
         btnVolver.setOnClickListener {
             finish()
         }
+
         // Insertar la receta en la base de datos
         btnConfirmar.setOnClickListener {
             // Obtener el texto ingresado por el usuario
@@ -45,17 +46,12 @@ class ControladorAnadirReceta: ComponentActivity() {
                     link = link,
                     imagen = "ruta/a/la/imagen"
                 )
-                val ingredientes = listOf(
-                    Ingrediente(id = 1, nombre = "Manzanas"),
-                    Ingrediente(id = 2, nombre = "Harina"),
-                    Ingrediente(id = 3, nombre = "Azúcar")
-                )
 
                 val pasos = Paso(
                     descripcion = paso
                 )
                 // Realiza peticion al modelo, y el modelo ejecuta la funcion correspondiente
-                val recetaId = dbHelper.crearReceta(nuevaReceta, ingredientes, pasos)
+                val recetaId = dbHelper.crearReceta(nuevaReceta, pasos)
                 if (recetaId != -1L) {
                     Toast.makeText(this, "Receta creada", Toast.LENGTH_SHORT).show()
                 } else {
