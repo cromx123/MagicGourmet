@@ -63,42 +63,68 @@
             android:background="@drawable/fondo_item_receta"
             android:padding="10dp"
             android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:text="Descripcion:"
+                android:textColor="@color/white" />
             <TextView
                 android:id="@+id/descrecetavisual"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:ems="10"
-                android:text="Descripcion"
+                android:text=""
                 android:textColor="@color/white" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:text="Ingredientes:"
+                android:textColor="@color/white" />
             <TextView
                 android:id="@+id/ingredientesvisual"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:text="Ingredientes"
+                android:text=""
                 android:textColor="@color/white" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:text="Paso a Paso:"
+                android:textColor="@color/white" />
             <TextView
                 android:id="@+id/pasoapvisual"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:text="Paso a Paso"
+                android:text=""
+                android:textColor="@color/white" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:text="Link:"
                 android:textColor="@color/white" />
             <TextView
                 android:id="@+id/linkvisual"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:text="Link a youtun"
+                android:text=""
                 android:textColor="@color/white" />
         </LinearLayout>
 
 
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
 
             <Button
                 android:id="@+id/btn_favorito"

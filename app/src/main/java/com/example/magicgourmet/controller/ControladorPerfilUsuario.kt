@@ -34,6 +34,24 @@ class ControladorPerfilUsuario: ComponentActivity() {
             userName_perfil.text = username
         }
         menuInferiorButtons()
+        menuCentralAdmin()
+    }
+
+    private fun menuCentralAdmin() {
+
+        val buttonActivityMap = mapOf(
+            R.id.btn_adm_ingre to ControladorAdminIngrediente::class.java,
+            R.id.btn_adm_receta to ControladorAdminReceta::class.java,
+            R.id.btn_adm_usuario to ControladorAdminUsuario::class.java,
+            R.id.btn_adm_filtro to ControladorAdminFiltro::class.java,
+            R.id.btn_adm_comentario to ControladorAdminComentario::class.java
+        )
+
+        buttonActivityMap.forEach { (buttonId, activityClass) ->
+            findViewById<ImageButton>(buttonId).setOnClickListener {
+                startActivity(Intent(this, activityClass))
+            }
+        }
     }
 
     private fun menuInferiorButtons() {

@@ -58,11 +58,6 @@ class ControladorAnadirReceta: ComponentActivity() {
                     link = link,
                     imagen = "ruta/a/la/imagen"
                 )
-                val ingredientes = listOf(
-                    Ingrediente(id = 1, nombre = "Manzanas"),
-                    Ingrediente(id = 2, nombre = "Harina"),
-                    Ingrediente(id = 3, nombre = "Azúcar")
-                )
 
                 val pasos = Paso(
                     descripcion = paso
