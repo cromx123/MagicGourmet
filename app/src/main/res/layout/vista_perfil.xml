@@ -101,18 +101,21 @@
             android:layout_height="50dp"
             android:layout_marginVertical="10dp"
             android:text="Admin Receta"/>
+
         <Button
             android:id="@+id/btn_adm_usuario"
             android:layout_width="200dp"
             android:layout_height="50dp"
             android:layout_marginVertical="10dp"
             android:text="Admin Usuario"/>
+
         <Button
             android:id="@+id/btn_adm_filtro"
             android:layout_width="200dp"
             android:layout_height="50dp"
             android:layout_marginVertical="10dp"
             android:text="Admin Filtro"/>
+
         <Button
             android:id="@+id/btn_adm_comentario"
             android:layout_width="200dp"

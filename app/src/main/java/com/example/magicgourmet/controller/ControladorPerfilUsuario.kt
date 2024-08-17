@@ -53,6 +53,7 @@ class ControladorPerfilUsuario: ComponentActivity() {
             }
         }
     }
+
     private fun menuInferiorButtons() {
 
         val buttonActivityMap = mapOf(

@@ -34,5 +34,4 @@
         android:layout_marginTop="8dp"
         android:paddingHorizontal="24dp"
         android:text="@string/eliminar_ingrediente" />
-
 </LinearLayout>
