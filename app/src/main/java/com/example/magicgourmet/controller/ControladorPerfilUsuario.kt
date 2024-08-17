@@ -28,10 +28,10 @@ class ControladorPerfilUsuario: ComponentActivity() {
         val btnbuscarper =findViewById<ImageButton>(R.id.btnperfilper)
         btnbuscarper.setImageResource(R.drawable.perfil_us_selec)
 
-        val userName_perfil = findViewById<TextView>(R.id.userName_perfil)
+        val userNameperfil = findViewById<TextView>(R.id.userName_perfil)
         username = sharedPreferences.getString("nameuser", null)
         if (username != null){
-            userName_perfil.text = username
+            userNameperfil.text = username
         }
         menuInferiorButtons()
         menuCentralAdmin()
@@ -59,7 +59,7 @@ class ControladorPerfilUsuario: ComponentActivity() {
         val buttonActivityMap = mapOf(
             R.id.btnhomeper to ControladorPrincipal::class.java,
             R.id.btnbuscarper to ControladorBuscarReceta::class.java,
-            R.id.btncrearper to ControladorAdminReceta::class.java,
+            R.id.btncrearper to ControladorAnadirReceta::class.java,
             R.id.btnperfilper to ControladorPerfilUsuario::class.java
         )
 

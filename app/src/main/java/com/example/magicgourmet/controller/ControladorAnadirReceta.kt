@@ -11,7 +11,6 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import com.example.magicgourmet.R
 import com.example.magicgourmet.model.DatabaseHelper
-import com.example.magicgourmet.model.Ingrediente
 import com.example.magicgourmet.model.Paso
 import com.example.magicgourmet.model.Receta
 

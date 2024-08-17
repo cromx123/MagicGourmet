@@ -30,6 +30,7 @@
         <activity android:name=".controller.ControladorAdminIngrediente"/>
         <activity android:name=".controller.ControladorAdminReceta"/>
         <activity android:name=".controller.ControladorAdminUsuario"/>
+        <activity android:name=".controller.ControladorAdminFiltro"/>
         <activity android:name=".controller.ControladorAgregarFavorito"/>
         <activity android:name=".controller.ControladorAnadirFiltro"/>
         <activity android:name=".controller.ControladorAnadirIngrediente"/>

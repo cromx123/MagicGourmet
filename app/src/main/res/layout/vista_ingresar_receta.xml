@@ -101,7 +101,7 @@
             android:layout_height="wrap_content"
             android:text="Link video:"
             android:textColor="@color/black"
-            android:labelFor="@+id/paso_receta"
+            android:labelFor="@+id/link_video"
             android:layout_row="3"
             android:layout_column="0" />
         <EditText

@@ -34,11 +34,11 @@
                 android:layout_marginEnd="10dp"
                 android:text="Nombre:"
                 android:textColor="@color/black"
-                android:labelFor="@+id/nom_receta"
+                android:labelFor="@+id/nom_recetaelim"
                 android:layout_row="0"
                 android:layout_column="0" />
             <EditText
-                android:id="@+id/nom_receta"
+                android:id="@+id/nom_recetaelim"
                 android:layout_width="240dp"
                 android:layout_height="48dp"
                 android:text=""
