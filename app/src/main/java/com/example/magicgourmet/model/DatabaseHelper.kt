@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 
 class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
@@ -135,7 +136,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         db.execSQL(SQL_DELETE_FILTRO_TABLE)
         onCreate(db)
     }
-    fun crearReceta( receta: Receta, ingredientes: List<Ingrediente>, pasos: Paso): Long{
+    fun crearReceta( receta: Receta, pasos: Paso): Long{
         val db = this.writableDatabase
         db.beginTransaction()
         var recetaId: Long = -1
@@ -152,14 +153,6 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
             // Insertar en la tabla Receta
             recetaId = db.insert("Receta", null, recetaValues)
 
-            // Insertar ingredientes relacionados
-            for (ingrediente in ingredientes) {
-                val ingredienteValues = ContentValues().apply {
-                    put("id", ingrediente.id)
-                    put("Nombre", ingrediente.nombre)
-                }
-                db.insert("Ingrediente", null, ingredienteValues)
-            }
 
             // Insertar pasos relacionados
             val pasoValues = ContentValues().apply {
@@ -243,4 +236,23 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         }
         return usuarioId
     }
+
+    fun getAllIngredients(): List<String> {
+        val ingredients = mutableListOf<String>()
+        val db = this.readableDatabase
+        val query = "SELECT $COLUMN_INGREDIENTE_NOMBRE FROM $TABLE_INGREDIENTE"
+        Log.d("DBHelper", "Executing query: $query")
+        val cursor = db.rawQuery(query, null)
+
+        if (cursor.moveToFirst()) {
+            do {
+                val nombre = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_INGREDIENTE_NOMBRE))
+                Log.d("DBHelper", "Ingredient found: $nombre")
+                ingredients.add(nombre)
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
+        return ingredients
+    }
+
 }
