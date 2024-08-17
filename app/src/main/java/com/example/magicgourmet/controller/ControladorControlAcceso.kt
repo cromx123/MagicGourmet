@@ -18,7 +18,6 @@ class ControladorControlAcceso: ComponentActivity() {
             startActivity(Intent(this, ControladorAutoRegistro::class.java))
         }
         btnIniciar.setOnClickListener{
-
             finish()
         }
         menuInferiorButtons()
