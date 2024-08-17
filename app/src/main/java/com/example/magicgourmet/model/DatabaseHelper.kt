@@ -197,13 +197,42 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         }
         return filasAfectadas
     }
-    fun buscarReceta(){}
+    fun buscarReceta(nombre: String): Receta? {
+        val db = this.readableDatabase
+        var recetaBuscada: Receta? = null
+
+        val cursor = db.query(
+            "Receta", // Nombre de la tabla
+            null, // Columnas (null selecciona todas las columnas)
+            "Nombre = ?", // Clausula WHERE
+            arrayOf(nombre), // Argumentos de la clausula WHERE
+            null, // Group by
+            null, // Having
+            null // Order by
+        )
+
+        cursor.use { // Esto cierra automáticamente el cursor después de usarlo
+            if (it.moveToFirst()) {
+                // Obtener los valores de la receta desde el cursor
+                val descripcion = it.getString(it.getColumnIndexOrThrow("Descripcion"))
+                val ingredientes = it.getString(it.getColumnIndexOrThrow("Ingredientes"))
+                val link = it.getString(it.getColumnIndexOrThrow("Link"))
+                val imagen = it.getString(it.getColumnIndexOrThrow("Imagen"))
+
+                recetaBuscada = Receta(nombre, descripcion, ingredientes, link, imagen)
+            }
+        }
+        if (cursor != null && cursor.count > 0) {
+            Log.d("BuscarReceta", "Recetas encontradas: ${cursor.count}")
+        } else {
+            Log.d("BuscarReceta", "No se encontró ninguna receta con ese nombre")
+        }
+        return recetaBuscada
+    }
     fun crearUsuario(usuario: Usuario): Long{
         val db = this.writableDatabase
-        // Iniciar una transacción para asegurar que todos los datos se inserten correctamente
         db.beginTransaction()
         var usuarioId: Long = -1
-
         try {
             // Crear un Usuario
             val usuarioValues = ContentValues().apply {
@@ -231,6 +260,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                 // Insertar en la tabla cliente
                 usuarioId = db.insert("Cliente", null, clienteValues)
             }
+            db.setTransactionSuccessful()
         } finally {
             db.endTransaction()
         }

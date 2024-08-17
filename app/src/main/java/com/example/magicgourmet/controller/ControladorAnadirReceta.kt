@@ -1,10 +1,7 @@
 package com.example.magicgourmet.controller
 
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -57,6 +54,11 @@ class ControladorAnadirReceta: ComponentActivity() {
                     ingredientes = selectedIngredients.joinToString(", "), // Puede ser un string separado por comas o puedes usar la lista de ingredientes
                     link = link,
                     imagen = "ruta/a/la/imagen"
+                )
+                val ingredientes = listOf(
+                    Ingrediente(id = 1, nombre = "Manzanas"),
+                    Ingrediente(id = 2, nombre = "Harina"),
+                    Ingrediente(id = 3, nombre = "Azúcar")
                 )
 
                 val pasos = Paso(
