@@ -207,10 +207,8 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
     fun buscarReceta(){}
     fun crearUsuario(usuario: Usuario): Long{
         val db = this.writableDatabase
-        // Iniciar una transacción para asegurar que todos los datos se inserten correctamente
         db.beginTransaction()
         var usuarioId: Long = -1
-
         try {
             // Crear un Usuario
             val usuarioValues = ContentValues().apply {
@@ -238,6 +236,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                 // Insertar en la tabla cliente
                 usuarioId = db.insert("Cliente", null, clienteValues)
             }
+            db.setTransactionSuccessful()
         } finally {
             db.endTransaction()
         }
