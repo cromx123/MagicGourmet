@@ -12,10 +12,11 @@ import com.example.magicgourmet.model.Receta
 class ControladorAnadirIngrediente: ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.vista_anadir_ingrediente)
         val btnCancelarIng = findViewById<Button>(R.id.CancelarIng)
         val btnAnadirIngrediente = findViewById<Button>(R.id.AnadirIngrediente)
         val dbHelper = DatabaseHelper(this)
-        setContentView(R.layout.vista_anadir_ingrediente)
+
 
         val editTextNombre = findViewById<EditText>(R.id.editTexNomIngrediente)
         btnCancelarIng.setOnClickListener {

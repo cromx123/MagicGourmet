@@ -2,6 +2,7 @@ package com.example.magicgourmet.controller
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageButton
 import androidx.activity.ComponentActivity
 import com.example.magicgourmet.R
@@ -21,7 +22,7 @@ class ControladorAdminIngrediente:ComponentActivity() {
         )
 
         buttonActivityMap.forEach { (buttonId, activityClass) ->
-            findViewById<ImageButton>(buttonId).setOnClickListener {
+            findViewById<Button>(buttonId).setOnClickListener {
                 startActivity(Intent(this, activityClass))
             }
         }
