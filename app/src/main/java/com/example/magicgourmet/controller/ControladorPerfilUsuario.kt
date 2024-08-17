@@ -21,7 +21,6 @@ class ControladorPerfilUsuario: ComponentActivity() {
 
         // Recuperar el inicio de seccion desde SharedPreferences
         sessionActive = sharedPreferences.getInt("sessionActive", 0)
-        sessionActive =0
         if (sessionActive == 0) {
             startActivity(Intent(this, ControladorControlAcceso::class.java))
         }
