@@ -1,13 +1,43 @@
 package com.example.magicgourmet.controller
 
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import com.example.magicgourmet.R
+import com.example.magicgourmet.model.DatabaseHelper
+import com.example.magicgourmet.model.Receta
 
 class ControladorAnadirIngrediente: ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val btnCancelarIng = findViewById<Button>(R.id.CancelarIng)
+        val btnAnadirIngrediente = findViewById<Button>(R.id.AnadirIngrediente)
+        val dbHelper = DatabaseHelper(this)
         setContentView(R.layout.vista_anadir_ingrediente)
 
+        val editTextNombre = findViewById<EditText>(R.id.editTexNomIngrediente)
+        btnCancelarIng.setOnClickListener {
+            finish()
+        }
+        btnAnadirIngrediente.setOnClickListener {
+            // Obtener el texto ingresado por el usuario
+            val nom = editTextNombre.text.toString()
+
+            if (nom.isNotEmpty()) {
+                // Realiza peticion al modelo, y el modelo ejecuta la funcion correspondiente
+                val IngId = dbHelper.anadirIng(nom)
+                if (IngId != -1L) {
+                    Toast.makeText(this, "Ingrediente añadido", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, "Error al añadir ingrediente", Toast.LENGTH_SHORT).show()
+                }
+                finish()
+            }
+         else {
+            Toast.makeText(this, "Ingrese un nombre", Toast.LENGTH_SHORT).show()
+        }
+        }
+        }
     }
-}

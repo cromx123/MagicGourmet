@@ -285,4 +285,12 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         return ingredients
     }
 
+    fun anadirIng(nombre: String): Long {
+        val db = writableDatabase
+        val values = ContentValues().apply {
+            put(COLUMN_INGREDIENTE_NOMBRE, nombre)
+        }
+        return db.insert(TABLE_INGREDIENTE, null, values)
+    }
+
 }
