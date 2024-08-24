@@ -13,6 +13,8 @@ class ControladorPrincipal : ComponentActivity() {
         val btnhome =findViewById<ImageButton>(R.id.btnhome)
         btnhome.setImageResource(R.drawable.hogar_selec)
 
+
+
         menuInferiorButtons()
     }
 

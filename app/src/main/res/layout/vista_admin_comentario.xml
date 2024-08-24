@@ -17,7 +17,7 @@
         android:fontFamily="@font/bethany_elingston"
         android:text="Administrar Comentario"
         />
-    <TextView
+    <EditText
         android:id="@+id/editTextTextPassword2"
         android:layout_width="261dp"
         android:layout_height="41dp"
@@ -26,7 +26,7 @@
         android:hint="Nombre Receta"
         />
 
-    <TextView
+    <EditText
         android:id="@+id/editTextTextPassword3"
         android:layout_width="261dp"
         android:layout_height="41dp"
@@ -37,7 +37,7 @@
 
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/btn_eliminar_admc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -45,7 +45,7 @@
         android:paddingHorizontal="24dp"
         android:text="eliminar comentario" />
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/btn_voler_admc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"

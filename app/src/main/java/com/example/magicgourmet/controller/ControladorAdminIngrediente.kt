@@ -13,6 +13,7 @@ class ControladorAdminIngrediente:ComponentActivity() {
         setContentView(R.layout.vista_admin_ingrediente)
 
         menuCentralAdmin()
+        menuInferiorButtons()
     }
     private fun menuCentralAdmin() {
 
@@ -26,5 +27,27 @@ class ControladorAdminIngrediente:ComponentActivity() {
                 startActivity(Intent(this, activityClass))
             }
         }
+    }
+    private fun menuInferiorButtons() {
+        val buttonActivityMap = mapOf(
+            R.id.btnhome_adm_ing to ControladorPrincipal::class.java,
+            R.id.btnbuscar_adm_ing to ControladorBuscarReceta::class.java,
+            R.id.btncrear_adm_ing to ControladorAdminReceta::class.java,
+            R.id.btnperfil_adm_ing to ControladorPerfilUsuario::class.java,
+        )
+
+        buttonActivityMap.forEach { (buttonId, activityClass) ->
+            findViewById<ImageButton>(buttonId).setOnClickListener {
+                if (buttonId == R.id.btncrearbr) {
+                    val optionsIntent = Intent(this, activityClass).apply {
+                        putExtra("OpcionAdmReceta", "crear")
+                    }
+                    startActivity(optionsIntent)
+                } else {
+                    startActivity(Intent(this, activityClass))
+                }
+            }
+        }
+
     }
 }

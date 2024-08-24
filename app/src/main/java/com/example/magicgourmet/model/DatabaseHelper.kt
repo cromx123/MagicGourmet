@@ -267,6 +267,32 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         }
         return recetaBuscada
     }
+    fun accesoUsuario(nombre: String, pass: String): Usuario? {
+        val db = this.readableDatabase
+        var buscarusuario: Usuario? = null
+
+        val cursor = db.query(
+            "Usuario", // Nombre de la tabla
+            null, // Columnas (null selecciona todas las columnas)
+            "User = ? AND pass = ?", // Clausula WHERE
+            arrayOf(nombre, pass), // Argumentos de la clausula WHERE
+            null, // Group by
+            null, // Having
+            null // Order by
+        )
+
+        cursor.use { // Esto cierra automáticamente el cursor después de usarlo
+            if (it.moveToFirst()) {
+                // Obtener los valores de la receta desde el cursor
+                val correo = it.getString(it.getColumnIndexOrThrow("Correo"))
+                val tipouser = it.getString(it.getColumnIndexOrThrow("tipo_user"))
+
+
+                buscarusuario = Usuario(nombre, pass, correo, tipouser)
+            }
+        }
+        return buscarusuario
+    }
     fun crearUsuario(usuario: Usuario): Long {
         val db = this.writableDatabase
         db.beginTransaction()
@@ -325,4 +351,29 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         return db.insert(TABLE_INGREDIENTE, null, values)
     }
 
+    fun getAllFiltros(): List<String> {
+        val filtros = mutableListOf<String>()
+        val db = this.readableDatabase
+        val query = "SELECT $COLUMN_INGREDIENTE_NOMBRE FROM $TABLE_INGREDIENTE"
+        Log.d("DBHelper", "Executing query: $query")
+        val cursor = db.rawQuery(query, null)
+
+        if (cursor.moveToFirst()) {
+            do {
+                val nombre = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_INGREDIENTE_NOMBRE))
+                Log.d("DBHelper", "Filtro encontrado: $nombre")
+                filtros.add(nombre)
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
+        return filtros
+    }
+
+    fun anadirFiltro(nombre: String): Long {
+        val db = writableDatabase
+        val values = ContentValues().apply {
+            put(COLUMN_FILTRO_DESCRIPCION, nombre)
+        }
+        return db.insert(COLUMN_FILTRO_DESCRIPCION, null, values)
+    }
 }

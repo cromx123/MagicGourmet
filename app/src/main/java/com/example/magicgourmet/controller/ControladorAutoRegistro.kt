@@ -48,11 +48,6 @@ class ControladorAutoRegistro: ComponentActivity() {
                     val usuarioId = dbHelper.crearUsuario(nuevoUsuario)
                     if (usuarioId != -1L) {
                         Toast.makeText(this, "Usuario registrado", Toast.LENGTH_SHORT).show()
-                        sharedPreferences.edit().apply {
-                            putString("nameuser", nombre)
-                            putInt("sessionActive", 1)
-                            apply() // Aplica los cambios de una sola vez
-                        }
                     } else {
                         Toast.makeText(this, "Error al registrar usuario", Toast.LENGTH_SHORT).show()
                     }
