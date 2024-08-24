@@ -15,7 +15,8 @@
         android:textSize="20sp"
         android:background="@color/fondo"
         android:fontFamily="@font/bethany_elingston"
-        android:text="Administrar Ingrediente" />
+        android:text="Administrar Filtros" />
+
 
 
     <View
@@ -32,23 +33,23 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/btn_anadir_ing"
-            android:layout_width="220dp"
+            android:id="@+id/btn_anadir_filter"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="@string/a_adir_ingrediente"
+            android:text="Añadir Filtros"
             android:layout_marginTop="16dp"
             android:paddingHorizontal="24dp" />
 
         <Button
-            android:id="@+id/btn_elim_ing"
-            android:layout_width="220dp"
+            android:id="@+id/btn_elim_filter"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="8dp"
             android:paddingVertical="15dp"
+            android:layout_marginTop="8dp"
             android:paddingHorizontal="24dp"
-            android:text="@string/eliminar_ingrediente" />
+            android:text="Eliminar Filtros" />
     </LinearLayout>
 
     <LinearLayout
@@ -62,7 +63,7 @@
 
 
         <ImageButton
-            android:id="@+id/btnhome_adm_ing"
+            android:id="@+id/btnhome_filter"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_gravity="bottom"
@@ -74,7 +75,7 @@
 
 
         <ImageButton
-            android:id="@+id/btnbuscar_adm_ing"
+            android:id="@+id/btnbuscar_filter"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_gravity="bottom"
@@ -85,7 +86,7 @@
             android:background="@color/transparente"/>
 
         <ImageButton
-            android:id="@+id/btncrear_adm_ing"
+            android:id="@+id/btncrear_filter"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_gravity="bottom"
@@ -96,7 +97,7 @@
             android:background="@color/transparente"/>
 
         <ImageButton
-            android:id="@+id/btnperfil_adm_ing"
+            android:id="@+id/btnperfil_filter"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_gravity="bottom"

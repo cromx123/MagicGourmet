@@ -81,13 +81,27 @@
             android:paddingVertical="10dp"
             android:textSize="28sp"
             android:fontFamily="@font/bethany_elingston"/>
+        <TextView
+            android:id="@+id/perfiladm_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="aministrador"
+            android:textColor="@color/white"
+            android:layout_gravity="end"
+            android:paddingHorizontal="15dp"
+            android:paddingVertical="17dp"
+            android:visibility="gone"
+            android:textSize="20sp"
+            android:fontFamily="@font/bethany_elingston"/>
     </FrameLayout>
 
     <LinearLayout
+        android:id="@+id/perfiladm_lista"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
+        android:visibility="gone"
         android:orientation="vertical">
         <Button
             android:id="@+id/btn_adm_ingre"
@@ -122,5 +136,20 @@
             android:layout_height="50dp"
             android:layout_marginVertical="10dp"
             android:text="Admin Comentario"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/perfilcli_lista"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:visibility="gone"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/btn_ver_favoritos"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginVertical="10dp"
+            android:text="Ver Favoritos"/>
     </LinearLayout>
 </FrameLayout>
