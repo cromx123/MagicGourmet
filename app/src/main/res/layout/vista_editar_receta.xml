@@ -1,130 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:gravity="center|top"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top|center"
-        android:padding="10dp"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:background="@color/fondo"
-        android:text="Editar Receta"
-        android:fontFamily="@font/bethany_elingston"/>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:background="@color/fondo">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center"
+            android:padding="10dp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:background="@color/fondo"
+            android:text="Editar Receta"
+            android:fontFamily="@font/bethany_elingston"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="@color/fondo">
 
+            <Button
+                android:id="@+id/btnAcceptmodReceta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:text="Confirmar"/>
+
+            <Button
+                android:id="@+id/btnCancelmodReceta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="Cancelar"/>
+        </RelativeLayout>
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:columnCount="2">
+            <TextView
+                android:id="@+id/textnom_receta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:text="Nombre:"
+                android:textColor="@color/black"
+                android:labelFor="@+id/nom_recetamod"
+                android:layout_row="0"
+                android:layout_column="0" />
+            <EditText
+                android:id="@+id/nom_recetamod"
+                android:layout_width="240dp"
+                android:layout_height="48dp"
+                android:inputType="text"
+                android:text=""
+                android:layout_row="0"
+                android:layout_column="1" />
+
+            <TextView
+                android:id="@+id/descreceta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Descripción:"
+                android:textColor="@color/black"
+                android:labelFor="@+id/desc_recetamod"
+                android:layout_row="1"
+                android:layout_column="0" />
+            <EditText
+                android:id="@+id/desc_recetamod"
+                android:layout_width="240dp"
+                android:layout_height="48dp"
+                android:inputType="text"
+                android:layout_row="1"
+                android:layout_column="1"/>
+            <TextView
+                android:id="@+id/pasoapaso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Paso a paso:"
+                android:textColor="@color/black"
+                android:labelFor="@+id/paso_recetamod"
+                android:layout_row="2"
+                android:layout_column="0" />
+
+            <EditText
+                android:id="@+id/paso_recetamod"
+                android:layout_width="240dp"
+                android:layout_height="48dp"
+                android:layout_row="2"
+                android:layout_column="1"
+                android:inputType="text" />
+
+            <TextView
+                android:id="@+id/linkvideo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Link video:"
+                android:textColor="@color/black"
+                android:labelFor="@+id/link_videomod"
+                android:layout_row="3"
+                android:layout_column="0" />
+            <EditText
+                android:id="@+id/link_videomod"
+                android:layout_width="240dp"
+                android:layout_height="48dp"
+                android:inputType="text"
+                android:layout_row="3"
+                android:layout_column="1"/>
+        </GridLayout>
         <Button
-            android:id="@+id/btnAcceptmodReceta"
-            android:layout_width="wrap_content"
+            android:id="@+id/btnSelectIngredientsMod"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:text="Confirmar"/>
-
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="Seleccionar Ingredientes" />
         <Button
-            android:id="@+id/btnCancelmodReceta"
-            android:layout_width="wrap_content"
+            android:id="@+id/btningresarI_recetaMod"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:text="Cancelar"/>
-    </RelativeLayout>
-
-    <GridLayout
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            android:paddingHorizontal="20dp"
+            android:layout_gravity="center"
+            android:text="Ingresar Imagen"/>
+    </LinearLayout>
+    <View
+        android:id="@+id/blocker_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:columnCount="2">
-        <TextView
-            android:id="@+id/textnom_receta"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:text="Nombre:"
-            android:textColor="@color/black"
-            android:labelFor="@+id/nom_recetamod"
-            android:layout_row="0"
-            android:layout_column="0" />
-        <EditText
-            android:id="@+id/nom_recetamod"
-            android:layout_width="240dp"
-            android:layout_height="48dp"
-            android:inputType="text"
-            android:text=""
-            android:layout_row="0"
-            android:layout_column="1" />
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:visibility="visible" />
 
+    <LinearLayout
+        android:id="@+id/btn_buscarreceta_modificar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center|top"
+        android:orientation="vertical"
+        android:visibility="visible">
         <TextView
-            android:id="@+id/descreceta"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Descripción:"
-            android:textColor="@color/black"
-            android:labelFor="@+id/desc_recetamod"
-            android:layout_row="1"
-            android:layout_column="0" />
-        <EditText
-            android:id="@+id/desc_recetamod"
-            android:layout_width="240dp"
-            android:layout_height="48dp"
-            android:inputType="text"
-            android:layout_row="1"
-            android:layout_column="1"/>
-        <TextView
-            android:id="@+id/pasoapaso"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Paso a paso:"
-            android:textColor="@color/black"
-            android:labelFor="@+id/paso_recetamod"
-            android:layout_row="2"
-            android:layout_column="0" />
+            android:layout_gravity="top|center"
+            android:padding="10dp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:background="@color/fondo"
+            android:fontFamily="@font/bethany_elingston"
+            android:text="Editar Receta"/>
 
         <EditText
-            android:id="@+id/paso_recetamod"
-            android:layout_width="240dp"
-            android:layout_height="48dp"
-            android:layout_row="2"
-            android:layout_column="1"
+            android:id="@+id/nombrerecetamod"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginVertical="30dp"
+            android:ems="10"
+            android:hint="Nombre Receta"
             android:inputType="text" />
 
-        <TextView
-            android:id="@+id/linkvideo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Link video:"
-            android:textColor="@color/black"
-            android:labelFor="@+id/link_videomod"
-            android:layout_row="3"
-            android:layout_column="0" />
-        <EditText
-            android:id="@+id/link_videomod"
-            android:layout_width="240dp"
-            android:layout_height="48dp"
-            android:inputType="text"
-            android:layout_row="3"
-            android:layout_column="1"/>
-    </GridLayout>
-    <Button
-        android:id="@+id/btnSelectIngredientsMod"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Seleccionar Ingredientes" />
-    <Button
-        android:id="@+id/btningresarI_recetaMod"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="10dp"
-        android:paddingHorizontal="20dp"
-        android:text="Ingresar Imagen"/>
 
-</LinearLayout>
+        <Button
+            android:id="@+id/btn_buscarrecetaMod"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:layout_gravity="center"
+            android:text="Buscar" />
+
+
+    </LinearLayout>
+
+</FrameLayout>

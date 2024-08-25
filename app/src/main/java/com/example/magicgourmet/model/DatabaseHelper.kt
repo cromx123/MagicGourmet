@@ -185,13 +185,37 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
 
         return recetaId
     }
-    fun modificarReceta(receta: Receta, pasos:Paso): Boolean {
+    fun modificarReceta(receta: Receta, pasos: Paso, nombre: String): Int {
         val db = this.writableDatabase
-        var isSuccessful = false
-
         db.beginTransaction()
+        var rowsAffected = 0
         try {
-            // Actualizar la receta
+            // Obtener el ID de la receta usando el nombre
+            val cursor = db.query(
+                TABLE_RECETA,
+                arrayOf(COLUMN_CODRECETA),
+                "$COLUMN_NOMBRE = ?",
+                arrayOf(nombre), // Corregido: usar receta.nombre
+                null,
+                null,
+                null
+            )
+
+            var id: Long? = null
+            cursor.use {
+                if (it.moveToFirst()) {
+                    id = it.getLong(it.getColumnIndexOrThrow(COLUMN_CODRECETA))
+                }
+            }
+            cursor.close()
+
+            // Verificar si se encontró la receta
+            if (id == null) {
+                Log.e("ModificarReceta", "Receta no encontrada")
+                return 0
+            }
+
+            // Crear un ContentValues para actualizar la tabla Receta
             val recetaValues = ContentValues().apply {
                 put(COLUMN_NOMBRE, receta.nombre)
                 put(COLUMN_DESCRIPCION, receta.descripcion)
@@ -199,25 +223,35 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                 put(COLUMN_LINK, receta.link)
                 put(COLUMN_IMAGEN, receta.imagen)
             }
-            val rowsUpdated = db.update(
+
+            // Actualizar la tabla Receta
+            rowsAffected = db.update(
                 TABLE_RECETA,
                 recetaValues,
-                "$COLUMN_NOMBRE = ?",
-                arrayOf(receta.nombre)
+                "$COLUMN_CODRECETA = ?", // Corregido: usar el ID de la receta
+                arrayOf(id.toString())
             )
 
-            if (rowsUpdated > 0) {
-                //
-                // Logica para modifcar los pasos aqui
-                //
-                db.setTransactionSuccessful()
-                isSuccessful = true
+            // Crear un ContentValues para actualizar los pasos
+            val pasoValues = ContentValues().apply {
+                put(COLUMN_CODRECETA, id)
+                put(COLUMN_DESCRIPCION, pasos.descripcion)
             }
+
+            // Actualizar el paso. Aquí solo se actualiza un paso; si hay varios, necesitarías manejar eso.
+            db.update(
+                TABLE_PASO,
+                pasoValues,
+                "$COLUMN_CODRECETA = ?", // Corregido: usar el ID de la receta
+                arrayOf(id.toString())
+            )
+
+            db.setTransactionSuccessful()
         } finally {
             db.endTransaction()
         }
 
-        return isSuccessful
+        return rowsAffected
     }
     fun eliminarReceta(nombre: String): Int {
         val db = this.writableDatabase
@@ -298,6 +332,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         }
         return recetaBuscada
     }
+    //fun buscarPaso(idreceta: String): Paso? {}
     fun obtenerRecetas(): List<Receta> {
         val recetas = mutableListOf<Receta>()
         val db = this.readableDatabase

@@ -77,10 +77,10 @@ class ControladorAnadirReceta: ComponentActivity() {
                 val recetaId = dbHelper.crearReceta(nuevaReceta, pasos)
                 if (recetaId != -1L) {
                     Toast.makeText(this, "Receta creada", Toast.LENGTH_SHORT).show()
+                    finish()
                 } else {
                     Toast.makeText(this, "Error al crear la receta", Toast.LENGTH_SHORT).show()
                 }
-                finish()
             } else {
                 Toast.makeText(this, "Ingrese un nombre", Toast.LENGTH_SHORT).show()
             }
