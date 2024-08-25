@@ -102,6 +102,11 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                     "$COLUMN_INGREDIENTE_ID INTEGER," +
                     "$COLUMN_FILTRO_DESCRIPCION TEXT," +
                     "FOREIGN KEY($COLUMN_INGREDIENTE_ID) REFERENCES $TABLE_INGREDIENTE($COLUMN_INGREDIENTE_ID))"
+        // SQL para insertar un usuario predeterminado
+        private val SQL_INSERTAR_USUARIO = """
+            INSERT INTO $TABLE_USUARIO ($COLUMN_USER, $COLUMN_PASS, $COLUMN_CORREO, $COLUMN_TIPO_USER) 
+            VALUES ('Gabriel', 'adm123', 'ga.admin@gmail.com', 'Administrador')
+        """.trimIndent()
 
         // SQL para eliminar las tablas
         private const val SQL_DELETE_USUARIO_TABLE = "DROP TABLE IF EXISTS $TABLE_USUARIO"
@@ -123,6 +128,19 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         db.execSQL(SQL_CREATE_PASO_TABLE)
         db.execSQL(SQL_CREATE_COMENTARIO_TABLE)
         db.execSQL(SQL_CREATE_FILTRO_TABLE)
+        db.execSQL(SQL_INSERTAR_USUARIO)
+        // Insertar 10 recetas
+        db.execSQL("INSERT INTO Receta (Nombre, Descripcion, Ingredientes, Link, Imagen) VALUES ('Tacos de Pollo', 'Tacos rellenos de pollo desmenuzado', 'Pollo, Tortillas, Queso, Salsa', 'https://linktacos.com', 'tacos.jpg')")
+        db.execSQL("INSERT INTO Receta (Nombre, Descripcion, Ingredientes, Link, Imagen) VALUES ('Ensalada César', 'Ensalada con lechuga romana, crutones y aderezo César', 'Lechuga, Pollo, Crutones, Queso parmesano, Aderezo César', 'https://linkensalada.com', 'ensalada.jpg')")
+        db.execSQL("INSERT INTO Receta (Nombre, Descripcion, Ingredientes, Link, Imagen) VALUES ('Pasta Alfredo', 'Pasta con salsa Alfredo y pollo', 'Pasta, Crema, Mantequilla, Pollo, Queso parmesano', 'https://linkpasta.com', 'pasta.jpg')")
+        db.execSQL("INSERT INTO Receta (Nombre, Descripcion, Ingredientes, Link, Imagen) VALUES ('Pizza Margarita', 'Pizza con salsa de tomate, mozzarella y albahaca', 'Masa, Salsa de tomate, Queso mozzarella, Albahaca', 'https://linkpizza.com', 'pizza.jpg')")
+        db.execSQL("INSERT INTO Receta (Nombre, Descripcion, Ingredientes, Link, Imagen) VALUES ('Sushi Roll', 'Rollos de sushi con salmón y aguacate', 'Arroz, Alga nori, Salmón, Aguacate, Salsa de soya', 'https://linksushi.com', 'sushi.jpg')")
+        db.execSQL("INSERT INTO Receta (Nombre, Descripcion, Ingredientes, Link, Imagen) VALUES ('Bistec a la Parrilla', 'Bistec de res cocido a la parrilla', 'Bistec, Sal, Pimienta, Aceite de oliva', 'https://linkbistec.com', 'bistec.jpg')")
+        db.execSQL("INSERT INTO Receta (Nombre, Descripcion, Ingredientes, Link, Imagen) VALUES ('Hamburguesa Clásica', 'Hamburguesa con carne, lechuga, tomate y queso', 'Carne molida, Pan, Lechuga, Tomate, Queso cheddar', 'https://linkhamburguesa.com', 'hamburguesa.jpg')")
+        db.execSQL("INSERT INTO Receta (Nombre, Descripcion, Ingredientes, Link, Imagen) VALUES ('Paella Valenciana', 'Paella tradicional con mariscos y pollo', 'Arroz, Pollo, Mariscos, Pimiento, Azafrán', 'https://linkpaella.com', 'paella.jpg')")
+        db.execSQL("INSERT INTO Receta (Nombre, Descripcion, Ingredientes, Link, Imagen) VALUES ('Lasagna Boloñesa', 'Lasagna con carne boloñesa y salsa bechamel', 'Pasta de lasagna, Carne molida, Salsa bechamel, Queso parmesano', 'https://linklasagna.com', 'lasagna.jpg')")
+        db.execSQL("INSERT INTO Receta (Nombre, Descripcion, Ingredientes, Link, Imagen) VALUES ('Tarta de Manzana', 'Tarta dulce con relleno de manzana y canela', 'Masa para tarta, Manzanas, Azúcar, Canela', 'https://linktarta.com', 'tarta.jpg')")
+
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
@@ -239,7 +257,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         val db = this.readableDatabase
         var recetaBuscada: Receta? = null
 
-        val cursor = db.query(
+        var cursor = db.query(
             "Receta", // Nombre de la tabla
             null, // Columnas (null selecciona todas las columnas)
             "Nombre = ?", // Clausula WHERE
@@ -249,15 +267,29 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
             null // Order by
         )
 
+        if (cursor.count == 0) { // Si no se encontró ningún resultado
+            cursor.close() // Cerrar el cursor anterior
+            cursor = db.query(
+                "Receta", // Nombre de la tabla
+                null, // Columnas (null selecciona todas las columnas)
+                "Ingredientes LIKE ?", // Clausula WHERE para buscar en ingredientes
+                arrayOf("%$nombre%"), // Argumentos de la clausula WHERE con comodines
+                null, // Group by
+                null, // Having
+                null // Order by
+            )
+        }
+
         cursor.use { // Esto cierra automáticamente el cursor después de usarlo
             if (it.moveToFirst()) {
                 // Obtener los valores de la receta desde el cursor
+                val nombrereceta = it.getString(it.getColumnIndexOrThrow("Nombre"))
                 val descripcion = it.getString(it.getColumnIndexOrThrow("Descripcion"))
                 val ingredientes = it.getString(it.getColumnIndexOrThrow("Ingredientes"))
                 val link = it.getString(it.getColumnIndexOrThrow("Link"))
                 val imagen = it.getString(it.getColumnIndexOrThrow("Imagen"))
 
-                recetaBuscada = Receta(nombre, descripcion, ingredientes, link, imagen)
+                recetaBuscada = Receta(nombrereceta, descripcion, ingredientes, link, imagen)
             }
         }
         if (cursor != null && cursor.count > 0) {
@@ -267,6 +299,37 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         }
         return recetaBuscada
     }
+    fun obtenerRecetas(): List<Receta> {
+        val recetas = mutableListOf<Receta>()
+        val db = this.readableDatabase
+
+        val cursor = db.query(
+            "Receta", // Nombre de la tabla
+            null, // Columnas (null selecciona todas las columnas)
+            null, // Clausula WHERE
+            null, // Argumentos de la clausula WHERE
+            null, // Group by
+            null, // Having
+            null // Order by
+        )
+
+        if (cursor.moveToFirst()) {
+            do {
+                val nombre = cursor.getString(cursor.getColumnIndexOrThrow("Nombre"))
+                val descripcion = cursor.getString(cursor.getColumnIndexOrThrow("Descripcion"))
+                val ingredientes = cursor.getString(cursor.getColumnIndexOrThrow("Ingredientes"))
+                val link = cursor.getString(cursor.getColumnIndexOrThrow("Link"))
+                val imagen = cursor.getString(cursor.getColumnIndexOrThrow("Imagen"))
+
+                val receta = Receta(nombre, descripcion, ingredientes, link, imagen)
+                recetas.add(receta)
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
+        Log.d("DatabaseHelper", "Cantidad de recetas obtenidas: ${recetas.size}")
+        return recetas
+    }
+
     fun accesoUsuario(nombre: String, pass: String): Usuario? {
         val db = this.readableDatabase
         var buscarusuario: Usuario? = null

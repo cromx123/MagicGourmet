@@ -4,15 +4,26 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
 import androidx.activity.ComponentActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.magicgourmet.R
+import com.example.magicgourmet.adapter.RecetaAdapter
+import com.example.magicgourmet.model.DatabaseHelper
 
 class ControladorPrincipal : ComponentActivity() {
+    private lateinit var dbHelper: DatabaseHelper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.vista_principal)
         val btnhome =findViewById<ImageButton>(R.id.btnhome)
         btnhome.setImageResource(R.drawable.hogar_selec)
 
+        dbHelper = DatabaseHelper(this)
+        val recetas = dbHelper.obtenerRecetas()
+
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewRecetas)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = RecetaAdapter(recetas)
 
 
         menuInferiorButtons()
