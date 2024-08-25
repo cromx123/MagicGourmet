@@ -69,4 +69,6 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation(libs.glide) // Añadir Glide aquí
+    annotationProcessor(libs.annotation) // Para las anotaciones de Glide
 }

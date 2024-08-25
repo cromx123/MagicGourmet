@@ -127,5 +127,10 @@
         android:layout_marginTop="10dp"
         android:paddingHorizontal="20dp"
         android:text="Ingresar Imagen"/>
+    <ImageView
+        android:id="@+id/imagereceta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
 
 </LinearLayout>

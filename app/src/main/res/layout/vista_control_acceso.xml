@@ -4,66 +4,78 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="top|center"
-        android:padding="10dp"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:background="@color/fondo"
-        android:fontFamily="@font/bethany_elingston"
-        android:text="Control de Acceso" />
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/controlaccesoCorreo"
-        android:layout_width="303dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top|center"
-        android:layout_marginTop="100dp"
-        android:ems="10"
-        android:hint="@string/correo"
-        android:inputType="textEmailAddress" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center"
+            android:padding="10dp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:background="@color/fondo"
+            android:fontFamily="@font/bethany_elingston"
+            android:text="Control de Acceso" />
 
-    <EditText
-        android:id="@+id/controlaccesoContrasena"
-        android:layout_width="303dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top|center"
-        android:layout_marginTop="150dp"
-        android:ems="10"
-        android:hint="@string/contrase_a"
-        android:inputType="textPassword" />
+        <EditText
+            android:id="@+id/controlaccesoCorreo"
+            android:layout_width="303dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="top|center"
+            android:ems="10"
+            android:hint="@string/correo"
+            android:inputType="textEmailAddress" />
 
-    <EditText
-        android:id="@+id/controlaccesoUsuario"
-        android:layout_width="303dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top|center"
-        android:layout_marginTop="50dp"
-        android:ems="10"
-        android:hint="@string/usuario"
-        android:inputType="text" />
+        <EditText
+            android:id="@+id/controlaccesoContrasena"
+            android:layout_width="303dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="top|center"
+            android:ems="10"
+            android:hint="@string/contrase_a"
+            android:inputType="textPassword" />
 
-    <Button
-        android:id="@+id/btn_iniciar_session"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center|start"
-        android:layout_marginBottom="100dp"
-        android:layout_marginStart="80dp"
-        android:text="@string/iniciar_sesion" />
+        <EditText
+            android:id="@+id/controlaccesoUsuario"
+            android:layout_width="303dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="top|center"
+            android:ems="10"
+            android:hint="@string/usuario"
+            android:inputType="text" />
 
-    <Button
-        android:id="@+id/btn_registrarsecontrol"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center|end"
-        android:layout_marginEnd="80dp"
-        android:layout_marginBottom="100dp"
-        android:text="@string/registrarse" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp">
+
+            <Button
+                android:id="@+id/btn_iniciar_session"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="20dp"
+                android:text="@string/iniciar_sesion" />
+
+            <Button
+                android:id="@+id/btn_registrarsecontrol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="20dp"
+                android:text="@string/registrarse" />
+        </RelativeLayout>
+    </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="80dp"

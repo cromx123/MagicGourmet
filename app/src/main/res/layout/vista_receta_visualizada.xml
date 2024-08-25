@@ -1,7 +1,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/fondo">
 
 
     <TextView
@@ -19,8 +20,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
         android:layout_marginVertical="65dp"
+        android:layout_marginHorizontal="5dp"
         android:background="@drawable/fondo_detalle_receta"
         android:orientation="vertical"
         android:padding="15dp">
@@ -51,12 +52,13 @@
                 android:text="Volver" />
         </RelativeLayout>
 
-
         <ImageView
-            android:layout_width="203dp"
+            android:id="@+id/imagenrecetaVisual"
+            android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_gravity="center"
-            android:src="@drawable/fondo_item_receta"/>
+            android:paddingVertical="10dp"
+            android:src="@drawable/fondo_item_receta" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -73,7 +75,7 @@
             <TextView
                 android:id="@+id/descrecetavisual"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="match_parent"
                 android:ems="10"
                 android:text=""
                 android:textColor="@color/white" />

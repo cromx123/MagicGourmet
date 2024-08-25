@@ -130,17 +130,16 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         db.execSQL(SQL_CREATE_FILTRO_TABLE)
         db.execSQL(SQL_INSERTAR_USUARIO)
         // Insertar 10 recetas
-        db.execSQL("INSERT INTO Receta (Nombre, Descripcion, Ingredientes, Link, Imagen) VALUES ('Tacos de Pollo', 'Tacos rellenos de pollo desmenuzado', 'Pollo, Tortillas, Queso, Salsa', 'https://linktacos.com', 'tacos.jpg')")
-        db.execSQL("INSERT INTO Receta (Nombre, Descripcion, Ingredientes, Link, Imagen) VALUES ('Ensalada César', 'Ensalada con lechuga romana, crutones y aderezo César', 'Lechuga, Pollo, Crutones, Queso parmesano, Aderezo César', 'https://linkensalada.com', 'ensalada.jpg')")
-        db.execSQL("INSERT INTO Receta (Nombre, Descripcion, Ingredientes, Link, Imagen) VALUES ('Pasta Alfredo', 'Pasta con salsa Alfredo y pollo', 'Pasta, Crema, Mantequilla, Pollo, Queso parmesano', 'https://linkpasta.com', 'pasta.jpg')")
-        db.execSQL("INSERT INTO Receta (Nombre, Descripcion, Ingredientes, Link, Imagen) VALUES ('Pizza Margarita', 'Pizza con salsa de tomate, mozzarella y albahaca', 'Masa, Salsa de tomate, Queso mozzarella, Albahaca', 'https://linkpizza.com', 'pizza.jpg')")
-        db.execSQL("INSERT INTO Receta (Nombre, Descripcion, Ingredientes, Link, Imagen) VALUES ('Sushi Roll', 'Rollos de sushi con salmón y aguacate', 'Arroz, Alga nori, Salmón, Aguacate, Salsa de soya', 'https://linksushi.com', 'sushi.jpg')")
-        db.execSQL("INSERT INTO Receta (Nombre, Descripcion, Ingredientes, Link, Imagen) VALUES ('Bistec a la Parrilla', 'Bistec de res cocido a la parrilla', 'Bistec, Sal, Pimienta, Aceite de oliva', 'https://linkbistec.com', 'bistec.jpg')")
-        db.execSQL("INSERT INTO Receta (Nombre, Descripcion, Ingredientes, Link, Imagen) VALUES ('Hamburguesa Clásica', 'Hamburguesa con carne, lechuga, tomate y queso', 'Carne molida, Pan, Lechuga, Tomate, Queso cheddar', 'https://linkhamburguesa.com', 'hamburguesa.jpg')")
-        db.execSQL("INSERT INTO Receta (Nombre, Descripcion, Ingredientes, Link, Imagen) VALUES ('Paella Valenciana', 'Paella tradicional con mariscos y pollo', 'Arroz, Pollo, Mariscos, Pimiento, Azafrán', 'https://linkpaella.com', 'paella.jpg')")
-        db.execSQL("INSERT INTO Receta (Nombre, Descripcion, Ingredientes, Link, Imagen) VALUES ('Lasagna Boloñesa', 'Lasagna con carne boloñesa y salsa bechamel', 'Pasta de lasagna, Carne molida, Salsa bechamel, Queso parmesano', 'https://linklasagna.com', 'lasagna.jpg')")
-        db.execSQL("INSERT INTO Receta (Nombre, Descripcion, Ingredientes, Link, Imagen) VALUES ('Tarta de Manzana', 'Tarta dulce con relleno de manzana y canela', 'Masa para tarta, Manzanas, Azúcar, Canela', 'https://linktarta.com', 'tarta.jpg')")
-
+        db.execSQL("INSERT INTO Receta (Nombre, Descripcion, Ingredientes, Link, Imagen) VALUES ('Tacos de Pollo', 'Tacos rellenos de pollo desmenuzado', 'Pollo, Tortillas, Queso, Salsa', 'https://linktacos.com', 'https://www.hojasanta.es/wp-content/uploads/2024/04/receta-mexicana-de-tacos-de-pollo-1.jpg')")
+        db.execSQL("INSERT INTO Receta (Nombre, Descripcion, Ingredientes, Link, Imagen) VALUES ('Ensalada César', 'Ensalada con lechuga romana, crutones y aderezo César', 'Lechuga, Pollo, Crutones, Queso parmesano, Aderezo César', 'https://linkensalada.com', 'https://www.gastrolabweb.com/u/fotografias/m/2023/9/21/f638x638-52578_110745_5050.jpg')")
+        db.execSQL("INSERT INTO Receta (Nombre, Descripcion, Ingredientes, Link, Imagen) VALUES ('Pasta Alfredo', 'Pasta con salsa Alfredo y pollo', 'Pasta, Crema, Mantequilla, Pollo, Queso parmesano', 'https://linkpasta.com', 'https://4.bp.blogspot.com/-CAZwMGubmwc/VDGGF6z6IeI/AAAAAAAAB3U/Ex0s3u_fWCI/s1600/Chicken%2BAlfredo%2BSyS2.jpg')")
+        db.execSQL("INSERT INTO Receta (Nombre, Descripcion, Ingredientes, Link, Imagen) VALUES ('Pizza Margarita', 'Pizza con salsa de tomate, mozzarella y albahaca', 'Masa, Salsa de tomate, Queso mozzarella, Albahaca', 'https://linkpizza.com', 'https://recetinas.com/wp-content/uploads/2017/09/pizza-de-albahaca-y-tomatitos-cherry-receta.jpg')")
+        db.execSQL("INSERT INTO Receta (Nombre, Descripcion, Ingredientes, Link, Imagen) VALUES ('Sushi Roll', 'Rollos de sushi con salmón y aguacate', 'Arroz, Alga nori, Salmón, Aguacate, Salsa de soya', 'https://linksushi.com', 'https://www.ahumadosdominguez.es/wp-content/uploads/2023/10/makis-de-salmon-ahumado-y-aguacate.jpg')")
+        db.execSQL("INSERT INTO Receta (Nombre, Descripcion, Ingredientes, Link, Imagen) VALUES ('Bistec a la Parrilla', 'Bistec de res cocido a la parrilla', 'Bistec, Sal, Pimienta, Aceite de oliva', 'https://linkbistec.com', 'https://www.wikihow.com/images_en/thumb/e/eb/Grill-Steak-Step-7-preview-Version-2.jpg/550px-nowatermark-Grill-Steak-Step-7-preview-Version-2.jpg')")
+        db.execSQL("INSERT INTO Receta (Nombre, Descripcion, Ingredientes, Link, Imagen) VALUES ('Hamburguesa Clásica', 'Hamburguesa con carne, lechuga, cebolla, tomate y queso', 'Carne molida, Pan, Lechuga, Tomate, Queso cheddar, Cebolla', 'https://linkhamburguesa.com', 'https://img.freepik.com/fotos-premium/hamburguesa-casera-dos-carnes-queso-lechuga-tomate-cebolla_255669-2809.jpg')")
+        db.execSQL("INSERT INTO Receta (Nombre, Descripcion, Ingredientes, Link, Imagen) VALUES ('Paella Valenciana', 'Paella tradicional con mariscos y pollo', 'Arroz, Pollo, Mariscos, Pimiento, Azafrán', 'https://linkpaella.com', 'https://www.demoslavueltaaldia.com/sites/default/files/paella-marisco-pollo-mi-amigo-botiquitas.jpg')")
+        db.execSQL("INSERT INTO Receta (Nombre, Descripcion, Ingredientes, Link, Imagen) VALUES ('Lasagna Boloñesa', 'Lasagna con carne boloñesa y salsa bechamel', 'Pasta de lasagna, Carne molida, Salsa bechamel, Queso parmesano', 'https://linklasagna.com', 'https://www.cronica.com.ar/img/2022/03/01/lasagna_jpg_1_crop1646142972363.jpg?__scale=w:720,h:406,t:2,fpx:603,fpy:339')")
+        db.execSQL("INSERT INTO Receta (Nombre, Descripcion, Ingredientes, Link, Imagen) VALUES ('Tarta de Manzana', 'Tarta dulce con relleno de manzana y canela', 'Masa para tarta, Manzanas, Azúcar, Canela', 'https://linktarta.com', 'https://media.mykaramelli.com/galeria/recetas/tarta-de-manzana-con-crumble-de-canela_100_1.jpg')")
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
@@ -320,7 +319,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                 val ingredientes = cursor.getString(cursor.getColumnIndexOrThrow("Ingredientes"))
                 val link = cursor.getString(cursor.getColumnIndexOrThrow("Link"))
                 val imagen = cursor.getString(cursor.getColumnIndexOrThrow("Imagen"))
-
+                Log.d("DatabaseHelper", "Imagen de receta: ${imagen}")
                 val receta = Receta(nombre, descripcion, ingredientes, link, imagen)
                 recetas.add(receta)
             } while (cursor.moveToNext())
