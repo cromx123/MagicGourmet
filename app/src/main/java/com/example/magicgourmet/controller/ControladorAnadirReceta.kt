@@ -97,10 +97,7 @@ class ControladorAnadirReceta: ComponentActivity() {
         }else if (requestCode == SELECT_IMAGE_REQUEST && resultCode == Activity.RESULT_OK) {
             imageUri = data?.data
             val imageView = findViewById<ImageView>(R.id.imagereceta)
-
             imageView?.setImageURI(imageUri)
-
-
         }
 
     }
