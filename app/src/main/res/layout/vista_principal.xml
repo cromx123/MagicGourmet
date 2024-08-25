@@ -5,6 +5,47 @@
              android:layout_height="match_parent"
     android:background="@color/fondo">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginBottom="80dp">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:background="@color/fondo"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MagicGourmet"
+                android:textColor="@color/white"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="10dp"
+                android:textSize="28sp"
+                android:fontFamily="@font/bethany_elingston"/>
+
+            <ImageButton
+                android:id="@+id/button5"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginHorizontal="40dp"
+                android:background="@color/transparente"
+                android:contentDescription="abre_los_ojos"
+                android:textSize="@dimen/_15sp"
+                android:src="@drawable/estrella"
+                android:scaleType="fitCenter"
+                />
+        </FrameLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewRecetas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="80dp"
@@ -69,45 +110,5 @@
 
 
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginBottom="80dp">
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:background="@color/fondo"
-            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="MagicGourmet"
-                android:textColor="@color/white"
-                android:paddingHorizontal="15dp"
-                android:paddingVertical="10dp"
-                android:textSize="28sp"
-                android:fontFamily="@font/bethany_elingston"/>
-
-            <ImageButton
-                android:id="@+id/button5"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="end|center_vertical"
-                android:layout_marginHorizontal="40dp"
-                android:background="@color/transparente"
-                android:contentDescription="abre_los_ojos"
-                android:textSize="@dimen/_15sp"
-                android:src="@drawable/estrella"
-                android:scaleType="fitCenter"
-                />
-        </FrameLayout>
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewRecetas"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
 </FrameLayout>
