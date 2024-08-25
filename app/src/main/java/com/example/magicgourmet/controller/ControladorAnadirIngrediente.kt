@@ -31,12 +31,12 @@ class ControladorAnadirIngrediente: ComponentActivity() {
                 if (ingId != -1L) {
                     Toast.makeText(this, "Ingrediente añadido", Toast.LENGTH_SHORT).show()
                 } else {
-                    Toast.makeText(this, "Error al añadir ingrediente", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "El ingrediente ya existe", Toast.LENGTH_SHORT).show()
                 }
-                finish()
+
             }
              else {
-                Toast.makeText(this, "Ingrese un nombre", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Ingrese un ingrediente", Toast.LENGTH_SHORT).show()
              }
         }
     }

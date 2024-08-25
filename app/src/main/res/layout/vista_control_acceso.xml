@@ -22,6 +22,16 @@
             android:text="Control de Acceso" />
 
         <EditText
+            android:id="@+id/controlaccesoUsuario"
+            android:layout_width="303dp"
+            android:layout_height="50dp"
+            android:layout_gravity="top|center"
+            android:layout_marginTop="5dp"
+            android:ems="10"
+            android:hint="@string/usuario"
+            android:inputType="text" />
+
+        <EditText
             android:id="@+id/controlaccesoCorreo"
             android:layout_width="303dp"
             android:layout_height="50dp"
@@ -40,16 +50,6 @@
             android:ems="10"
             android:hint="@string/contrase_a"
             android:inputType="textPassword" />
-
-        <EditText
-            android:id="@+id/controlaccesoUsuario"
-            android:layout_width="303dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="5dp"
-            android:layout_gravity="top|center"
-            android:ems="10"
-            android:hint="@string/usuario"
-            android:inputType="text" />
 
         <RelativeLayout
             android:layout_width="match_parent"

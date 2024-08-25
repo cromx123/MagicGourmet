@@ -23,13 +23,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="top|center"
         android:layout_marginTop="50dp"
-        android:ems="10"
+        android:ems="12"
         android:hint="Nombre de ingrediente"
         android:inputType="text" />
 
     <Button
         android:id="@+id/AnadirIngrediente"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="@string/a_adir_ingrediente"
@@ -38,11 +38,11 @@
 
     <Button
         android:id="@+id/CancelarIng"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="8dp"
         android:paddingHorizontal="24dp"
-        android:text="Cancelar" />
+        android:text="Volver" />
 
 </LinearLayout>

@@ -407,11 +407,56 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
 
     fun anadirIng(nombre: String): Long {
         val db = writableDatabase
-        val values = ContentValues().apply {
-            put(COLUMN_INGREDIENTE_NOMBRE, nombre)
+        val cursor = db.query(
+            TABLE_INGREDIENTE,  // Tabla
+            arrayOf(COLUMN_INGREDIENTE_NOMBRE),  // Columnas a devolver
+            "$COLUMN_INGREDIENTE_NOMBRE = ?",  // Clausula WHERE
+            arrayOf(nombre),  // Valores para la clausula WHERE
+            null,  // Group by
+            null,  // Having
+            null   // Order by
+        )
+        return if (cursor.count > 0) {
+            // Si el cursor tiene al menos una fila, el ingrediente ya existe
+            cursor.close()
+            -1  // Retornamos -1 para indicar que no se realizó la inserción
+        } else {
+            // Si no existe, lo insertamos
+            cursor.close()
+            val values = ContentValues().apply {
+                put(COLUMN_INGREDIENTE_NOMBRE, nombre)
+            }
+            db.insert(TABLE_INGREDIENTE, null, values)
         }
-        return db.insert(TABLE_INGREDIENTE, null, values)
     }
+    fun eliminarIng(nombre: String): Int {
+        val db = writableDatabase
+
+        // Verificar si el ingrediente está en alguna receta
+        val cursor = db.query(
+            TABLE_RECETA,  // Tabla de recetas
+            arrayOf(COLUMN_INGREDIENTES),  // Columna de los ingredientes en las recetas
+            "$COLUMN_INGREDIENTES LIKE ?",  // Cláusula WHERE con LIKE para buscar coincidencias parciales
+            arrayOf("%$nombre%"),  // Valores para la clausula WHERE
+            null,  // Group by
+            null,  // Having
+            null   // Order by
+        )
+        return if (cursor.count > 0) {
+            // Si el cursor tiene al menos una fila, el ingrediente está en una receta
+            cursor.close()
+            -1  // Retornamos -1 para indicar que no se realizó la eliminación
+        } else {
+            // Si no está en ninguna receta, eliminamos el ingrediente
+            cursor.close()
+            db.delete(
+                TABLE_INGREDIENTE,  // Tabla
+                "$COLUMN_INGREDIENTE_NOMBRE = ?",  // Clausula WHERE
+                arrayOf(nombre)  // Valores para la clausula WHERE
+            )
+        }
+    }
+
 
     fun getAllFiltros(): List<String> {
         val filtros = mutableListOf<String>()
@@ -433,9 +478,25 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
 
     fun anadirFiltro(nombre: String): Long {
         val db = writableDatabase
-        val values = ContentValues().apply {
-            put(COLUMN_FILTRO_DESCRIPCION, nombre)
+        val cursor = db.query(
+            COLUMN_FILTRO_DESCRIPCION,  // Tabla
+            arrayOf(COLUMN_FILTRO_DESCRIPCION),  // Columnas a devolver
+            "$COLUMN_FILTRO_DESCRIPCION = ?",  // Clausula WHERE
+            arrayOf(nombre),  // Valores para la clausula WHERE
+            null,  // Group by
+            null,  // Having
+            null   // Order by
+        )
+        return if (cursor.count > 0) {
+            cursor.close()
+            -1  // Retornamos -1 para indicar que no se realizó la inserción
+        } else {
+            // Si no existe, lo insertamos
+            cursor.close()
+            val values = ContentValues().apply {
+                put(COLUMN_FILTRO_DESCRIPCION, nombre)
+            }
+            db.insert(COLUMN_FILTRO_DESCRIPCION, null, values)
         }
-        return db.insert(COLUMN_FILTRO_DESCRIPCION, null, values)
     }
 }
