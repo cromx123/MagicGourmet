@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.FrameLayout
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -50,8 +51,23 @@ class ControladorPerfilUsuario: ComponentActivity() {
         }
 
         val btnbuscarper =findViewById<ImageButton>(R.id.btnperfilper)
-        btnbuscarper.setImageResource(R.drawable.perfil_us_selec)
-
+        val btncerrarsession =findViewById<Button>(R.id.btnAcceptconCerrar)
+        val btncancelar =findViewById<Button>(R.id.btnCancelconCerrar)
+        val mensaje = findViewById<FrameLayout>(R.id.mensaje_confirmarcerrar)
+        btnbuscarper.setImageResource(R.drawable.letrax_select)
+        btnbuscarper.setOnClickListener{
+            mensaje.visibility = View.VISIBLE
+        }
+        btncancelar.setOnClickListener{
+            mensaje.visibility = View.GONE
+        }
+        btncerrarsession.setOnClickListener{
+            sharedPreferences.edit().apply {
+                putInt("sessionActive", 0)
+                apply()
+            }
+            startActivity(Intent(this, ControladorPrincipal::class.java))
+        }
         menuInferiorButtons()
         menuCentralAdmin()
     }
@@ -78,8 +94,7 @@ class ControladorPerfilUsuario: ComponentActivity() {
         val buttonActivityMap = mapOf(
             R.id.btnhomeper to ControladorPrincipal::class.java,
             R.id.btnbuscarper to ControladorBuscarReceta::class.java,
-            R.id.btncrearper to ControladorAnadirReceta::class.java,
-            R.id.btnperfilper to ControladorPerfilUsuario::class.java
+            R.id.btncrearper to ControladorAnadirReceta::class.java
         )
 
         buttonActivityMap.forEach { (buttonId, activityClass) ->

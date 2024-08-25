@@ -61,7 +61,7 @@
             android:layout_marginHorizontal="15dp"
             android:contentDescription="todo1"
             android:scaleType="fitXY"
-            android:src="@drawable/perfil_us"
+            android:src="@drawable/letrax"
             android:background="@color/transparente"/>
     </LinearLayout>
     <FrameLayout
@@ -152,4 +152,55 @@
             android:layout_marginVertical="10dp"
             android:text="Ver Favoritos"/>
     </LinearLayout>
+    <FrameLayout
+        android:id="@+id/mensaje_confirmarcerrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/fondo_alerta"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginBottom="160dp"
+            android:layout_gravity="center" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="45dp"
+            android:layout_marginTop="130dp"
+            android:layout_marginBottom="160dp"
+            android:layout_gravity="center|top"
+            android:text="¿Cerrar la sessión?"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="18sp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="45dp"
+            android:layout_marginTop="130dp"
+            android:layout_marginBottom="160dp"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="10dp"
+            android:layout_gravity="center">
+
+
+            <Button
+                android:id="@+id/btnAcceptconCerrar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:text="Cerrar"/>
+
+            <Button
+                android:id="@+id/btnCancelconCerrar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="Cancelar"/>
+        </RelativeLayout>
+    </FrameLayout>
+
 </FrameLayout>
