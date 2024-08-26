@@ -79,7 +79,8 @@ class ControladorPerfilUsuario: ComponentActivity() {
             R.id.btn_adm_receta to ControladorAdminReceta::class.java,
             R.id.btn_adm_usuario to ControladorAdminUsuario::class.java,
             R.id.btn_adm_filtro to ControladorAdminFiltro::class.java,
-            R.id.btn_adm_comentario to ControladorAdminComentario::class.java
+            R.id.btn_adm_comentario to ControladorAdminComentario::class.java,
+            R.id.btn_ver_favoritos to ControladorVisFavorito::class.java
         )
 
         buttonActivityMap.forEach { (buttonId, activityClass) ->
