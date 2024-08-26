@@ -30,8 +30,8 @@
 
             <ImageButton
                 android:id="@+id/button5"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_gravity="end|center_vertical"
                 android:layout_marginHorizontal="40dp"
                 android:background="@color/transparente"

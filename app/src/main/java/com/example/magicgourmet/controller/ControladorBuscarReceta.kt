@@ -28,13 +28,18 @@ class ControladorBuscarReceta: ComponentActivity() {
 
             if (nombre.isNotEmpty()) {
 
-                val buscarReceta = dbHelper.buscarReceta(nombre)
+                val (receta, paso) = dbHelper.buscarReceta(nombre)
 
-                Log.d("BuscarReceta", "Buscando receta con nombre: $buscarReceta")
-
-                if (buscarReceta != null) {
+                if (receta != null) {
                     val optionsIntent = Intent(this, ControladorRecetaVisualizada::class.java).apply {
-                        putExtra("NombreRecetab", buscarReceta)
+                        putExtra("NombreReceta", receta.nombre)
+                        putExtra("DescripcionReceta", receta.descripcion)
+                        putExtra("IngredientesReceta", receta.ingredientes)
+                        putExtra("LinkReceta", receta.link)
+                        putExtra("ImagenReceta", receta.imagen)
+                        if (paso != null) {
+                            putExtra("PasosReceta", paso.descripcion)
+                        }
                     }
                     startActivity(optionsIntent)
                     Toast.makeText(this, "Receta encontrada", Toast.LENGTH_SHORT).show()

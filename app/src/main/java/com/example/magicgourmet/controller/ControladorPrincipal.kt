@@ -19,11 +19,11 @@ class ControladorPrincipal : ComponentActivity() {
         btnhome.setImageResource(R.drawable.hogar_selec)
 
         dbHelper = DatabaseHelper(this)
-        val recetas = dbHelper.obtenerRecetas()
+        val recetasConPasos = dbHelper.obtenerRecetasConPasos()
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewRecetas)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = RecetaAdapter(recetas)
+        recyclerView.adapter = RecetaAdapter(recetasConPasos)
 
 
         menuInferiorButtons()

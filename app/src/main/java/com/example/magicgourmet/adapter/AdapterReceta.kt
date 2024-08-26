@@ -9,13 +9,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.magicgourmet.R
 import com.example.magicgourmet.model.Receta
+import com.example.magicgourmet.model.Paso
 
-class RecetaAdapter(private val recetaList: List<Receta>) : RecyclerView.Adapter<RecetaAdapter.RecetaViewHolder>() {
+class RecetaAdapter(private val recetasConPasos: List<Pair<Receta, List<Paso>>>) : RecyclerView.Adapter<RecetaAdapter.RecetaViewHolder>() {
 
     class RecetaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tvNombre: TextView = itemView.findViewById(R.id.nombrecetaFeed)
         val tvDescripcion: TextView = itemView.findViewById(R.id.descrecetaFeed)
         val tvIngredientes: TextView = itemView.findViewById(R.id.ingredientesFeed)
+        val tvPaso: TextView = itemView.findViewById(R.id.pasoapFeed)
         val tvLink: TextView = itemView.findViewById(R.id.linkFeed)
         val tvimagen: ImageView = itemView.findViewById(R.id.imagenrecetaFeed)
     }
@@ -26,22 +28,22 @@ class RecetaAdapter(private val recetaList: List<Receta>) : RecyclerView.Adapter
     }
 
     override fun onBindViewHolder(holder: RecetaViewHolder, position: Int) {
-        val receta = recetaList[position]
+        val (receta, pasos) = recetasConPasos[position]
         holder.tvNombre.text = receta.nombre
         holder.tvDescripcion.text = receta.descripcion
+        holder.tvPaso.text = pasos.joinToString (", ") {it.descripcion}
         holder.tvIngredientes.text = receta.ingredientes
         holder.tvLink.text = receta.link
 
         // log. Cargar la imagen usando Glide
         Glide.with(holder.itemView.context)
             .load(receta.imagen) // Aquí se carga la imagen desde la ruta o URI
-
             .placeholder(R.drawable.imagen_buscando) // Imagen de placeholder mientras carga
             .error(R.drawable.imagen_nocargada) // Imagen en caso de error
             .into(holder.tvimagen)
     }
 
     override fun getItemCount(): Int {
-        return recetaList.size
+        return recetasConPasos.size
     }
 }
