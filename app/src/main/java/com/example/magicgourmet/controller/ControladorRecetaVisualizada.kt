@@ -32,7 +32,7 @@ class ControladorRecetaVisualizada : ComponentActivity() {
             startActivity(Intent(this, ControladorPrincipal::class.java))
         }
         btnFavorito.setOnClickListener {
-            startActivity(Intent(this, ControladorAgregarFavorito::class.java))
+            //startActivity(Intent(this, ))
         }
 
         if (nombreReceta != null) {

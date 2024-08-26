@@ -28,18 +28,7 @@
                 android:textSize="28sp"
                 android:fontFamily="@font/bethany_elingston"/>
 
-            <ImageButton
-                android:id="@+id/button5"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_gravity="end|center_vertical"
-                android:layout_marginHorizontal="40dp"
-                android:background="@color/transparente"
-                android:contentDescription="abre_los_ojos"
-                android:textSize="@dimen/_15sp"
-                android:src="@drawable/estrella"
-                android:scaleType="fitCenter"
-                />
+
         </FrameLayout>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewRecetas"

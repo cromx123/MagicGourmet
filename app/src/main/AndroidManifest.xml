@@ -46,7 +46,6 @@
         <activity android:name=".controller.ControladorAdminReceta"/>
         <activity android:name=".controller.ControladorAdminUsuario"/>
         <activity android:name=".controller.ControladorAdminFiltro"/>
-        <activity android:name=".controller.ControladorAgregarFavorito"/>
         <activity android:name=".controller.ControladorAnadirFiltro"/>
         <activity android:name=".controller.ControladorAnadirIngrediente"/>
         <activity android:name=".controller.ControladorAnadirReceta"/>
@@ -54,12 +53,10 @@
         <activity android:name=".controller.ControladorControlAcceso"/>
         <activity android:name=".controller.ControladorEditarReceta"/>
         <activity android:name=".controller.ControladorElimComentario"/>
-        <activity android:name=".controller.ControladorElimFavorito"/>
         <activity android:name=".controller.ControladorElimFiltro"/>
         <activity android:name=".controller.ControladorElimIngrediente"/>
         <activity android:name=".controller.ControladorElimReceta"/>
         <activity android:name=".controller.ControladorElimUsuario"/>
-        <activity android:name=".controller.ControladorGestFavorito"/>
         <activity android:name=".controller.ControladorGestComentario"/>
         <activity android:name=".controller.ControladorIngresarComentario"/>
         <activity android:name=".controller.ControladorModUsuario"/>

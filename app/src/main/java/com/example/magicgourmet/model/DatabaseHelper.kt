@@ -198,6 +198,17 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
 
         // Insert Pasos de las recetas creadas
         db.execSQL("INSERT INTO Paso (Codreceta, Descripcion) VALUES('1','Cocinar el pollo hasta que esté completamente cocido y desmenuzar.\nCalentar las tortillas en un sartén.\nColocar el pollo desmenuzado en las tortillas.\nAgregar queso y salsa al gusto.\nServir caliente y disfrutar.')")
+        db.execSQL("INSERT INTO Paso (Codreceta, Descripcion) VALUES('2','Lavar y cortar la lechuga en trozos.\nColocar la lechuga en un bol grande.\nAgregar los crutones sobre la lechuga.\nRallar el queso parmesano y espolvorearlo sobre la ensalada.\nAñadir el aderezo César al gusto y mezclar bien.\n Servir inmediatamente y disfrutar.')")
+        db.execSQL("INSERT INTO Paso (Codreceta, Descripcion) VALUES ('3', 'Cocer la pasta según las instrucciones del paquete.\nDerretir la mantequilla en una sartén grande.\nAgregar la crema a la sartén y calentar a fuego lento.\nIncorporar el queso parmesano y mezclar hasta que se derrita.\nMezclar la pasta cocida con la salsa Alfredo y servir caliente.')")
+        db.execSQL("INSERT INTO Paso (Codreceta, Descripcion) VALUES ('4', 'Precalentar el horno a 220°C.\nExtender la masa para pizza sobre una bandeja de horno.\nCubrir la masa con salsa de tomate.\nAgregar el queso mozzarella y hornear durante 15-20 minutos.\nDecorar con hojas de albahaca fresca antes de servir.')")
+        db.execSQL("INSERT INTO Paso (Codreceta, Descripcion) VALUES ('5', 'Cocer el arroz para sushi y enfriarlo.\nColocar una hoja de alga nori sobre una esterilla de bambú.\nExtender el arroz sobre el alga nori, dejando un borde.\nAgregar tiras de salmón y aguacate en el centro.\nEnrollar el sushi con la ayuda de la esterilla y cortar en piezas.')")
+        db.execSQL("INSERT INTO Paso (Codreceta, Descripcion) VALUES ('6', 'Sazonar el bistec con sal y pimienta.\nCalentar una parrilla o sartén con aceite de oliva.\nCocinar el bistec a fuego alto durante 4-5 minutos por cada lado.\nDejar reposar el bistec durante unos minutos antes de servir.')")
+        db.execSQL("INSERT INTO Paso (Codreceta, Descripcion) VALUES ('7', 'Formar la carne molida en hamburguesas.\nCocinar las hamburguesas en una sartén o parrilla.\nTostar el pan en la sartén.\nMontar la hamburguesa con lechuga, tomate y queso cheddar.\nServir caliente.')")
+        db.execSQL("INSERT INTO Paso (Codreceta, Descripcion) VALUES ('8', 'Sofreír el pollo en una paellera.\nAgregar los mariscos y pimientos y cocinar un poco más.\nIncorporar el arroz y el azafrán, y añadir caldo.\nCocinar a fuego medio hasta que el arroz esté listo.\nDejar reposar antes de servir.')")
+        db.execSQL("INSERT INTO Paso (Codreceta, Descripcion) VALUES ('9', 'Preparar la salsa boloñesa con carne molida y salsa de tomate.\nCocinar la pasta de lasagna según las instrucciones del paquete.\nAlternar capas de pasta, salsa boloñesa y salsa bechamel en una fuente para horno.\nCubrir con queso parmesano y hornear durante 30-40 minutos.\nDejar reposar antes de servir.')")
+        db.execSQL("INSERT INTO Paso (Codreceta, Descripcion) VALUES ('10', 'Preparar la masa y colocarla en un molde para tarta.\nPelar y cortar las manzanas en rodajas.\nMezclar las manzanas con azúcar y canela.\nColocar las manzanas sobre la masa y cubrir con más masa si se desea.\nHornear a 180°C durante 45-50 minutos.\nDejar enfriar antes de servir.')")
+
+
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
@@ -405,7 +416,6 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
 
         return Pair(recetaBuscada, listaPasos)
     }
-    //fun buscarPaso(idreceta: String): Paso? {}
     fun obtenerRecetasConPasos(): List<Pair<Receta, List<Paso>>> {
         val db = this.readableDatabase
         val recetasConPasos = mutableListOf<Pair<Receta, List<Paso>>>()
@@ -444,6 +454,38 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         cursorRecetas.close()
 
         return recetasConPasos
+    }
+    fun agregarFavorito(nombreReceta: String, usuario: String) {
+        val db = this.writableDatabase
+        db.beginTransaction()
+        try {
+            // Buscar el Codreceta de la receta por su nombre
+            val cursor = db.query(
+                "Receta", // Nombre de la tabla
+                arrayOf("CodReceta"), // Columnas a seleccionar
+                "Nombre = ?", // Clausula WHERE
+                arrayOf(nombreReceta), // Argumentos de la clausula WHERE
+                null, // Group by
+                null, // Having
+                null // Order by
+            )
+            if (cursor.moveToFirst()) {
+                val codReceta = cursor.getLong(cursor.getColumnIndexOrThrow("CodReceta"))
+
+                // Insertar en la tabla Favoritos
+                val values = ContentValues().apply {
+                    put("CodReceta", codReceta)
+                    put("User", usuario)
+                }
+                db.insert("Favoritos", null, values)
+                db.setTransactionSuccessful()
+            } else {
+                Log.d("AgregarFavorito", "Receta no encontrada: $nombreReceta")
+            }
+            cursor.close()
+        } finally {
+            db.endTransaction()
+        }
     }
     fun accesoUsuario(nombre: String, pass: String): Usuario? {
         val db = this.readableDatabase
