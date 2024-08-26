@@ -43,7 +43,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:text="Descripcion:"
+                android:text="Descripción:"
+                android:textSize="17sp"
                 android:textColor="@color/white" />
             <TextView
                 android:id="@+id/descrecetaFeed"
@@ -51,12 +52,16 @@
                 android:layout_height="match_parent"
                 android:ems="10"
                 android:text=""
+                android:textSize="14sp"
+                android:paddingHorizontal="10dp"
                 android:textColor="@color/white" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:ems="10"
                 android:text="Ingredientes:"
+                android:textSize="17sp"
                 android:textColor="@color/white" />
             <TextView
                 android:id="@+id/ingredientesFeed"
@@ -64,12 +69,16 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:text=""
+                android:textSize="14sp"
+                android:paddingHorizontal="10dp"
                 android:textColor="@color/white" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:ems="10"
                 android:text="Paso a Paso:"
+                android:textSize="17sp"
                 android:textColor="@color/white" />
             <TextView
                 android:id="@+id/pasoapFeed"
@@ -77,12 +86,16 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:text=""
+                android:textSize="14sp"
+                android:paddingHorizontal="10dp"
                 android:textColor="@color/white" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:ems="10"
                 android:text="Link:"
+                android:textSize="17sp"
                 android:textColor="@color/white" />
             <TextView
                 android:id="@+id/linkFeed"
@@ -90,6 +103,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:text=""
+                android:textSize="14sp"
+                android:paddingHorizontal="10dp"
                 android:textColor="@color/white" />
         </LinearLayout>
         <RelativeLayout

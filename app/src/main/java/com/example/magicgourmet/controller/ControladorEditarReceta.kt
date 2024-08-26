@@ -55,16 +55,19 @@ class ControladorEditarReceta: ComponentActivity() {
 
             if (nombre.isNotEmpty()) {
 
-                val buscarReceta = dbHelper.buscarReceta(nombre)
-                Log.d("BuscarReceta", "Buscando receta con nombre: $buscarReceta")
+                val (receta, paso) = dbHelper.buscarReceta(nombre)
+                Log.d("BuscarReceta", "Buscando receta con nombre: ${receta}")
 
-                if (buscarReceta != null) {
+                if (receta != null) {
                     blockerview.visibility = View.GONE
                     linearbuscar.visibility = View.GONE
-                    findViewById<EditText>(R.id.nom_recetamod).setText(buscarReceta.nombre)
-                    findViewById<EditText>(R.id.desc_recetamod).setText(buscarReceta.descripcion)
+                    findViewById<EditText>(R.id.nom_recetamod).setText(receta.nombre)
+                    findViewById<EditText>(R.id.desc_recetamod).setText(receta.descripcion)
                     //findViewById<TextView>(R.id.ingredientesvisual).text = buscarReceta.ingredientes
-                    findViewById<EditText>(R.id.link_videomod).setText(buscarReceta.link)
+                    if (paso != null) {
+                        findViewById<EditText>(R.id.paso_recetamod).setText(paso.descripcion)
+                    }
+                    findViewById<EditText>(R.id.link_videomod).setText(receta.link)
 
                 } else {
                     Toast.makeText(this, "Error al buscar la receta", Toast.LENGTH_SHORT).show()

@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import com.bumptech.glide.Glide
 import com.example.magicgourmet.R
+import com.example.magicgourmet.model.Paso
 import com.example.magicgourmet.model.Receta
 
 class ControladorRecetaVisualizada : ComponentActivity() {
@@ -20,7 +21,12 @@ class ControladorRecetaVisualizada : ComponentActivity() {
         val btnVolver = findViewById<Button>(R.id.btn_volver_menu)
         val btnComentario = findViewById<Button>(R.id.btn_comentario)
         val btnFavorito = findViewById<Button>(R.id.btn_favorito)
-        val receta = intent.getSerializableExtra("NombreRecetab") as? Receta
+        val nombreReceta = intent.getStringExtra("NombreReceta")
+        val descripcionReceta = intent.getStringExtra("DescripcionReceta")
+        val ingredientesReceta = intent.getStringExtra("IngredientesReceta")
+        val linkReceta = intent.getStringExtra("LinkReceta")
+        val imagenReceta = intent.getStringExtra("ImagenReceta")
+        val pasosReceta = intent.getStringExtra("PasosReceta")
 
         btnVolver.setOnClickListener {
             startActivity(Intent(this, ControladorPrincipal::class.java))
@@ -29,17 +35,18 @@ class ControladorRecetaVisualizada : ComponentActivity() {
             startActivity(Intent(this, ControladorAgregarFavorito::class.java))
         }
 
-        if (receta != null) {
-            findViewById<TextView>(R.id.nombrerecetavisual).text = receta.nombre
-            findViewById<TextView>(R.id.descrecetavisual).text = receta.descripcion
-            findViewById<TextView>(R.id.ingredientesvisual).text = receta.ingredientes
-            findViewById<TextView>(R.id.linkvisual).text = receta.link
+        if (nombreReceta != null) {
+            findViewById<TextView>(R.id.nombrerecetavisual).text = nombreReceta
+            findViewById<TextView>(R.id.descrecetavisual).text = descripcionReceta
+            findViewById<TextView>(R.id.ingredientesvisual).text = ingredientesReceta
+            findViewById<TextView>(R.id.pasoapvisual).text = pasosReceta
+            findViewById<TextView>(R.id.linkvisual).text = linkReceta
 
             val imageView = findViewById<ImageView>(R.id.imagenrecetaVisual)
 
 
             Glide.with(this)
-                    .load(receta.imagen)
+                    .load(imagenReceta)
                     .error(R.drawable.imagen_nocargada) // Imagen por defecto en caso de error
                     .into(imageView)
         } else {

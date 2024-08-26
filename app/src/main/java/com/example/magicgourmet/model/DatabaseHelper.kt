@@ -12,6 +12,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         private const val DATABASE_NAME = "magicgourmet.db"
         private const val DATABASE_VERSION = 1
 
+
         // Tabla Usuario
         private const val TABLE_USUARIO = "Usuario"
         private const val COLUMN_USER = "User"
@@ -51,6 +52,9 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         // Tabla Filtro
         private const val TABLE_FILTRO = "Filtro"
         private const val COLUMN_FILTRO_DESCRIPCION = "Descripcion"
+
+        // Tabla Favorito
+        private const val TABLE_FAVORITOS = "Favorito"
 
         // SQL para crear las tablas
         private const val SQL_CREATE_USUARIO_TABLE =
@@ -102,6 +106,15 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                     "$COLUMN_INGREDIENTE_ID INTEGER," +
                     "$COLUMN_FILTRO_DESCRIPCION TEXT," +
                     "FOREIGN KEY($COLUMN_INGREDIENTE_ID) REFERENCES $TABLE_INGREDIENTE($COLUMN_INGREDIENTE_ID))"
+
+        private const val SQL_CREATE_FAVORITOS_TABLE =
+            "CREATE TABLE $TABLE_FAVORITOS (" +
+                    "$COLUMN_CODRECETA INTEGER," +
+                    "$COLUMN_USER TEXT," +
+                    "FOREIGN KEY($COLUMN_CODRECETA) REFERENCES $TABLE_RECETA($COLUMN_CODRECETA)," +
+                    "FOREIGN KEY($COLUMN_USER) REFERENCES $TABLE_USUARIO($COLUMN_USER))"
+
+
         // SQL para insertar un usuario predeterminado
         private val SQL_INSERTAR_USUARIO = """
             INSERT INTO $TABLE_USUARIO ($COLUMN_USER, $COLUMN_PASS, $COLUMN_CORREO, $COLUMN_TIPO_USER) 
@@ -128,7 +141,9 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         db.execSQL(SQL_CREATE_PASO_TABLE)
         db.execSQL(SQL_CREATE_COMENTARIO_TABLE)
         db.execSQL(SQL_CREATE_FILTRO_TABLE)
+        db.execSQL(SQL_CREATE_FAVORITOS_TABLE)
         db.execSQL(SQL_INSERTAR_USUARIO)
+
         // Insertar 10 recetas
         db.execSQL("INSERT INTO Receta (Nombre, Descripcion, Ingredientes, Link, Imagen) VALUES ('Tacos de Pollo', 'Tacos rellenos de pollo desmenuzado', 'Pollo, Tortillas, Queso, Salsa', 'https://linktacos.com', 'https://www.hojasanta.es/wp-content/uploads/2024/04/receta-mexicana-de-tacos-de-pollo-1.jpg')")
         db.execSQL("INSERT INTO Receta (Nombre, Descripcion, Ingredientes, Link, Imagen) VALUES ('Ensalada César', 'Ensalada con lechuga romana, crutones y aderezo César', 'Lechuga, Pollo, Crutones, Queso parmesano, Aderezo César', 'https://linkensalada.com', 'https://www.gastrolabweb.com/u/fotografias/m/2023/9/21/f638x638-52578_110745_5050.jpg')")
@@ -140,6 +155,49 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         db.execSQL("INSERT INTO Receta (Nombre, Descripcion, Ingredientes, Link, Imagen) VALUES ('Paella Valenciana', 'Paella tradicional con mariscos y pollo', 'Arroz, Pollo, Mariscos, Pimiento, Azafrán', 'https://linkpaella.com', 'https://www.demoslavueltaaldia.com/sites/default/files/paella-marisco-pollo-mi-amigo-botiquitas.jpg')")
         db.execSQL("INSERT INTO Receta (Nombre, Descripcion, Ingredientes, Link, Imagen) VALUES ('Lasagna Boloñesa', 'Lasagna con carne boloñesa y salsa bechamel', 'Pasta de lasagna, Carne molida, Salsa bechamel, Queso parmesano', 'https://linklasagna.com', 'https://www.cronica.com.ar/img/2022/03/01/lasagna_jpg_1_crop1646142972363.jpg?__scale=w:720,h:406,t:2,fpx:603,fpy:339')")
         db.execSQL("INSERT INTO Receta (Nombre, Descripcion, Ingredientes, Link, Imagen) VALUES ('Tarta de Manzana', 'Tarta dulce con relleno de manzana y canela', 'Masa para tarta, Manzanas, Azúcar, Canela', 'https://linktarta.com', 'https://media.mykaramelli.com/galeria/recetas/tarta-de-manzana-con-crumble-de-canela_100_1.jpg')")
+
+        // Insertar los ingrediente
+        db.execSQL("INSERT INTO Ingrediente (Nombre) VALUES('Pollo')")
+        db.execSQL("INSERT INTO Ingrediente (Nombre) VALUES('Tortillas')")
+        db.execSQL("INSERT INTO Ingrediente (Nombre) VALUES('Queso cheddar')")
+        db.execSQL("INSERT INTO Ingrediente (Nombre) VALUES('Salsa')")
+        db.execSQL("INSERT INTO Ingrediente (Nombre) VALUES('Lechuga')")
+        db.execSQL("INSERT INTO Ingrediente (Nombre) VALUES('Crutones')")
+        db.execSQL("INSERT INTO Ingrediente (Nombre) VALUES('Queso parmesano')")
+        db.execSQL("INSERT INTO Ingrediente (Nombre) VALUES('Aderezo César')")
+        db.execSQL("INSERT INTO Ingrediente (Nombre) VALUES('Fideos')")
+        db.execSQL("INSERT INTO Ingrediente (Nombre) VALUES('Crema')")
+        db.execSQL("INSERT INTO Ingrediente (Nombre) VALUES('Mantequilla')")
+        db.execSQL("INSERT INTO Ingrediente (Nombre) VALUES('Masa')")
+        db.execSQL("INSERT INTO Ingrediente (Nombre) VALUES('Salsa de tomate')")
+        db.execSQL("INSERT INTO Ingrediente (Nombre) VALUES('Queso mozzarella')")
+        db.execSQL("INSERT INTO Ingrediente (Nombre) VALUES('Albahaca')")
+        db.execSQL("INSERT INTO Ingrediente (Nombre) VALUES('Arroz')")
+        db.execSQL("INSERT INTO Ingrediente (Nombre) VALUES('Alga nori')")
+        db.execSQL("INSERT INTO Ingrediente (Nombre) VALUES('Salmón')")
+        db.execSQL("INSERT INTO Ingrediente (Nombre) VALUES('Aguacate')")
+        db.execSQL("INSERT INTO Ingrediente (Nombre) VALUES('Salsa de soya')")
+        db.execSQL("INSERT INTO Ingrediente (Nombre) VALUES('Bistec')")
+        db.execSQL("INSERT INTO Ingrediente (Nombre) VALUES('Sal')")
+        db.execSQL("INSERT INTO Ingrediente (Nombre) VALUES('Pimienta')")
+        db.execSQL("INSERT INTO Ingrediente (Nombre) VALUES('Aceite de oliva')")
+        db.execSQL("INSERT INTO Ingrediente (Nombre) VALUES('Carne molida')")
+        db.execSQL("INSERT INTO Ingrediente (Nombre) VALUES('Pan')")
+        db.execSQL("INSERT INTO Ingrediente (Nombre) VALUES('Tomate')")
+        db.execSQL("INSERT INTO Ingrediente (Nombre) VALUES('Queso cheddar')")
+        db.execSQL("INSERT INTO Ingrediente (Nombre) VALUES('Cebolla')")
+        db.execSQL("INSERT INTO Ingrediente (Nombre) VALUES('Mariscos')")
+        db.execSQL("INSERT INTO Ingrediente (Nombre) VALUES('Pimiento')")
+        db.execSQL("INSERT INTO Ingrediente (Nombre) VALUES('Azafrán')")
+        db.execSQL("INSERT INTO Ingrediente (Nombre) VALUES('Pasta de lasagna')")
+        db.execSQL("INSERT INTO Ingrediente (Nombre) VALUES('Salsa bechamel')")
+        db.execSQL("INSERT INTO Ingrediente (Nombre) VALUES('Masa para tarta')")
+        db.execSQL("INSERT INTO Ingrediente (Nombre) VALUES('Manzanas')")
+        db.execSQL("INSERT INTO Ingrediente (Nombre) VALUES('Azúcar')")
+        db.execSQL("INSERT INTO Ingrediente (Nombre) VALUES('Canela')")
+
+        // Insert Pasos de las recetas creadas
+        db.execSQL("INSERT INTO Paso (Codreceta, Descripcion) VALUES('1','Cocinar el pollo hasta que esté completamente cocido y desmenuzar.\nCalentar las tortillas en un sartén.\nColocar el pollo desmenuzado en las tortillas.\nAgregar queso y salsa al gusto.\nServir caliente y disfrutar.')")
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
@@ -151,6 +209,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         db.execSQL(SQL_DELETE_PASO_TABLE)
         db.execSQL(SQL_DELETE_COMENTARIO_TABLE)
         db.execSQL(SQL_DELETE_FILTRO_TABLE)
+        db.execSQL(SQL_CREATE_FAVORITOS_TABLE)
         onCreate(db)
     }
     fun crearReceta( receta: Receta, pasos: Paso): Long{
@@ -286,9 +345,10 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         }
         return filasAfectadas
     }
-    fun buscarReceta(nombre: String): Receta? {
+    fun buscarReceta(nombre: String): Pair<Receta?, Paso?> {
         val db = this.readableDatabase
         var recetaBuscada: Receta? = null
+        var listaPasos: Paso? = null
 
         var cursor = db.query(
             "Receta", // Nombre de la tabla
@@ -316,6 +376,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         cursor.use { // Esto cierra automáticamente el cursor después de usarlo
             if (it.moveToFirst()) {
                 // Obtener los valores de la receta desde el cursor
+                val codreceta = it.getString(it.getColumnIndexOrThrow("Codreceta"))
                 val nombrereceta = it.getString(it.getColumnIndexOrThrow("Nombre"))
                 val descripcion = it.getString(it.getColumnIndexOrThrow("Descripcion"))
                 val ingredientes = it.getString(it.getColumnIndexOrThrow("Ingredientes"))
@@ -323,47 +384,67 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                 val imagen = it.getString(it.getColumnIndexOrThrow("Imagen"))
 
                 recetaBuscada = Receta(nombrereceta, descripcion, ingredientes, link, imagen)
+
+                // Obtener los pasos relacionados
+                val pasosCursor = db.rawQuery("SELECT * FROM Paso WHERE Codreceta = ?", arrayOf(codreceta))
+
+                pasosCursor.use { pasos ->
+                    if (pasos.moveToFirst()) {
+                        val pasoDescripcion = pasos.getString(pasos.getColumnIndexOrThrow("Descripcion"))
+                        listaPasos = Paso(pasoDescripcion)
+                    }
+                }
             }
         }
-        if (cursor != null && cursor.count > 0) {
+
+        if (cursor.count > 0) {
             Log.d("BuscarReceta", "Recetas encontradas: ${cursor.count}")
         } else {
             Log.d("BuscarReceta", "No se encontró ninguna receta con ese nombre")
         }
-        return recetaBuscada
+
+        return Pair(recetaBuscada, listaPasos)
     }
     //fun buscarPaso(idreceta: String): Paso? {}
-    fun obtenerRecetas(): List<Receta> {
-        val recetas = mutableListOf<Receta>()
+    fun obtenerRecetasConPasos(): List<Pair<Receta, List<Paso>>> {
         val db = this.readableDatabase
+        val recetasConPasos = mutableListOf<Pair<Receta, List<Paso>>>()
 
-        val cursor = db.query(
-            "Receta", // Nombre de la tabla
-            null, // Columnas (null selecciona todas las columnas)
-            null, // Clausula WHERE
-            null, // Argumentos de la clausula WHERE
-            null, // Group by
-            null, // Having
-            null // Order by
-        )
+        val cursorRecetas = db.rawQuery("SELECT * FROM Receta", null)
 
-        if (cursor.moveToFirst()) {
+        if (cursorRecetas.moveToFirst()) {
             do {
-                val nombre = cursor.getString(cursor.getColumnIndexOrThrow("Nombre"))
-                val descripcion = cursor.getString(cursor.getColumnIndexOrThrow("Descripcion"))
-                val ingredientes = cursor.getString(cursor.getColumnIndexOrThrow("Ingredientes"))
-                val link = cursor.getString(cursor.getColumnIndexOrThrow("Link"))
-                val imagen = cursor.getString(cursor.getColumnIndexOrThrow("Imagen"))
-                Log.d("DatabaseHelper", "Imagen de receta: ${imagen}")
-                val receta = Receta(nombre, descripcion, ingredientes, link, imagen)
-                recetas.add(receta)
-            } while (cursor.moveToNext())
-        }
-        cursor.close()
-        Log.d("DatabaseHelper", "Cantidad de recetas obtenidas: ${recetas.size}")
-        return recetas
-    }
+                val recetaId = cursorRecetas.getLong(cursorRecetas.getColumnIndexOrThrow("Codreceta"))
+                val nombre = cursorRecetas.getString(cursorRecetas.getColumnIndexOrThrow("Nombre"))
+                val descripcion = cursorRecetas.getString(cursorRecetas.getColumnIndexOrThrow("Descripcion"))
+                val ingredientes = cursorRecetas.getString(cursorRecetas.getColumnIndexOrThrow("Ingredientes"))
+                val link = cursorRecetas.getString(cursorRecetas.getColumnIndexOrThrow("Link"))
+                val imagen = cursorRecetas.getString(cursorRecetas.getColumnIndexOrThrow("Imagen"))
 
+                // Crear la instancia de Receta
+                val receta = Receta(nombre, descripcion, ingredientes, link, imagen)
+
+                // Consultar los pasos asociados a la receta actual
+                val pasosCursor = db.rawQuery("SELECT * FROM Paso WHERE Codreceta = ?", arrayOf(recetaId.toString()))
+                val pasos = mutableListOf<Paso>()
+
+                if (pasosCursor.moveToFirst()) {
+                    do {
+                        val pasoDescripcion = pasosCursor.getString(pasosCursor.getColumnIndexOrThrow("Descripcion"))
+                        pasos.add(Paso(pasoDescripcion))
+                    } while (pasosCursor.moveToNext())
+                }
+                pasosCursor.close()
+
+                // Añadir la receta junto con sus pasos a la lista
+                recetasConPasos.add(Pair(receta, pasos))
+
+            } while (cursorRecetas.moveToNext())
+        }
+        cursorRecetas.close()
+
+        return recetasConPasos
+    }
     fun accesoUsuario(nombre: String, pass: String): Usuario? {
         val db = this.readableDatabase
         var buscarusuario: Usuario? = null
